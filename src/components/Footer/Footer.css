@@ -1,0 +1,13 @@
+.Footer {
+    margin-top: auto;
+    display: flex;
+    padding-bottom: 24px;
+    font-family: Cabinet Grotesk;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.Footer__year {
+    margin-left: auto;
+}
