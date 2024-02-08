@@ -35,4 +35,9 @@ export const defaultClothingItems = [
       weather: "cold",
       link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4",
     },
-  ]
+  ];
+
+  export const apiKey = "2979cfc6bd4b20d5aad1e14ac0da127a";
+  export const locationName = "Tel Aviv";
+  export const latitude = 32.109333;
+  export const longitude = 34.855499;
