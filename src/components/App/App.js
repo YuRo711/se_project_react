@@ -17,20 +17,22 @@ function App() {
   const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
   const [weather, updateWeather] = React.useState();
 
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
-    )
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject("something went wrong");
-      }
-    })
-    .then((json) => {
-      updateWeather(json);
-    })
-    .catch((err) => { console.log(err); });
+  React.useEffect(() => {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
+      )
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          return Promise.reject("something went wrong");
+        }
+      })
+      .then((json) => {
+        updateWeather(json);
+      })
+      .catch((err) => { console.log(err); });
+  }, []);
 
   if (!weather) {
     return <div className="App">Loading...</div>
