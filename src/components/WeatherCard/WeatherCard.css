@@ -1,0 +1,17 @@
+.WeatherCard {
+    max-width: 100%;
+    position: relative;
+}
+
+.WeatherCard__card {
+    z-index: 0;
+    position: absolute;
+    max-height: 80px;
+}
+
+.WeatherCard__temperature {
+    position: relative;
+    margin: 20px 0 0 16px;
+    z-index: 1;
+    color: #fff;
+}

@@ -1,0 +1,11 @@
+.Header {
+    display: flex;
+}
+
+.Header__add-button {
+    margin-left: auto;
+}
+
+.Header__user {
+    display: flex;
+}
