@@ -2,8 +2,6 @@ import logo from "../../images/Logo.svg";
 import avatar from "../../images/avatar.svg";
 
 function Header(props) {
-    const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
-  
     return (
       <div className="Header">
         <img className="Header__logo"
@@ -11,7 +9,7 @@ function Header(props) {
             alt="WTWR logo"
         ></img>
         <div className="Header__date-place">
-            {currentDate}, {props.locationName}
+            {props.currentDate}, {props.locationName}
         </div>
         <button className="Header__add-button">
             + Add clothes

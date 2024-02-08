@@ -4,16 +4,17 @@ import {
   locationName,
   latitude,
   longitude,
+  weatherImagesDay,
+  weatherImagesNight,
 } from "../../utils/constants.js";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer.js";
 import React from "react";
-import sunny from "../../images/weather sunny.png";
 
 
 function App() {
-  const [clothes, updateClothes] = React.useState(defaultClothingItems);
+  const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
   const [weather, updateWeather] = React.useState();
 
   fetch(
@@ -36,14 +37,21 @@ function App() {
   } else {
     const temperature = Math.round(weather.main.temp);
     const tempType = getTempType(temperature);
-    const weatherType = weather.weather[0].main;
+
+    const weatherId = weather.weather[0].id;
+    const weatherType = getWeatherType(weatherId);
+    const dayTime = isDayTime(weather.sys.sunrise, weather.sys.sunset);
+    const weatherImage = dayTime ?
+      weatherImagesDay[weatherType] :
+      weatherImagesNight[weatherType];
 
     return (
       <div className="App">
         <Header 
           locationName={locationName}
+          currentDate={currentDate}
         />
-        <Main weatherImage={sunny}
+        <Main weatherImage={weatherImage}
           temperature={temperature+"°F"}
           cards={defaultClothingItems}
           tempType={tempType}
@@ -56,6 +64,7 @@ function App() {
     );
   }
 
+
   function getTempType(temperature) {
     if (temperature >= 86) {
       return 'hot';
@@ -64,6 +73,28 @@ function App() {
     } else if (temperature <= 65) {
       return 'cold';
     }
+  }
+
+  function getWeatherType(id) {
+    if (id > 800) {
+      return 'clouds';
+    } else if (id == 800) {
+      return 'clear';
+    } else if (id == 741) {
+      return 'fog';
+    } else if (id > 600) {
+      return 'snow';
+    } else if (id > 300) {
+      return 'rain';
+    } else if (id > 200) {
+      return 'storm';
+    }
+  }
+
+  function isDayTime(sunrise, sunset) {
+    const currentTime = Date.now();
+    return currentTime >= sunrise * 1000 && 
+      currentTime < sunset * 1000;
   }
 }
 
