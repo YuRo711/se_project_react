@@ -1,11 +1,35 @@
 .Header {
     display: flex;
+    align-items: center;
+    font-family: 'Cabinet Grotesk';
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    padding-bottom: 28px;
+}
+
+.Header__date-place {
+    margin-left: 16px;
 }
 
 .Header__add-button {
     margin-left: auto;
+    border: none;
+    background: none;
+    box-shadow: none;
+    outline: none;
+    font-family: 'Cabinet Grotesk';
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
 }
 
 .Header__user {
     display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.Header__user-avatar {
+    margin-left: 12px;
 }

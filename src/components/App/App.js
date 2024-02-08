@@ -1,4 +1,3 @@
-import "./App.css";
 import { defaultClothingItems } from "../../utils/constants.js";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -12,7 +11,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Main weatherImage={sunny} temperature={"75°F"} />
+      <Main weatherImage={sunny}
+        temperature={"75°F"}
+        cards={defaultClothingItems}
+      />
       {/*
       <Footer />
       <ModalWithForm />

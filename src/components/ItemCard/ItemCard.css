@@ -1,0 +1,31 @@
+.ItemCard {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 325px;
+    height: 328px;
+    overflow: hidden;
+    border-radius: 19px;
+    border: solid 1px #0000004D;
+}
+
+.ItemCard__image {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.ItemCard__name {
+    position: relative;
+    top: 15px;
+    z-index: 1;
+    height: fit-content;
+    background-color: #FFF;
+    padding: 2px 12px;
+    border-radius: 4px;
+    font-family: Cabinet Grotesk;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #00000099;
+}

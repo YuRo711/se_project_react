@@ -1,0 +1,13 @@
+.Main__text {
+    font-family: Cabinet Grotesk;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+.Main__cards {
+    padding-top: 34px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
