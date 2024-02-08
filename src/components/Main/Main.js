@@ -13,11 +13,14 @@ function Main(props) {
         </div>
         <div className="Main__cards">
           {
-            props.cards.map((card, i) => (
-              <ItemCard
-                key={i}
-                data={card} />
-            ))
+            props.cards.filter(
+                (card) => card.weather == props.tempType
+              )
+              .map((card, i) => (
+                <ItemCard
+                  key={i}
+                  data={card} />
+              ))
           }
           <ItemCard />
         </div>
