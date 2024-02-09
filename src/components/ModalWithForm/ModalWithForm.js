@@ -40,32 +40,35 @@ function ModalWithForm(props) {
                 <label for="weather" className="ModalWithForm__radio">
                   <input type="radio"
                     className="ModalWithForm__radio-button"
-                    id="hot"
-                    name="weather"
-                    required/>
+                    value="hot"
+                    name="weather"/>
                   <span className="ModalWithForm__radio-label">Hot</span>
                 </label><br/>
 
                 <label for="weather" className="ModalWithForm__radio">
                   <input type="radio"
                     className="ModalWithForm__radio-button"
-                    id="warm"
-                    name="weather"
-                    required/>
+                    value="warm"
+                    name="weather"/>
                   <span className="ModalWithForm__radio-label">Warm</span>
                 </label><br/>
 
                 <label for="weather" className="ModalWithForm__radio">
                   <input type="radio"
                     className="ModalWithForm__radio-button"
-                    id="cold"
-                    name="weather"
-                    required/>
+                    value="cold"
+                    name="weather"/>
                   <span className="ModalWithForm__radio-label">Cold</span>
                 </label><br/>
               </div>
 
-              <button type="submit" className="ModalWithForm__submit-button">
+              <button type="submit"
+                className="ModalWithForm__submit-button"
+                onClick={(event) => {
+                  event.preventDefault();
+                  submitHandler();
+                }}
+              >
                 Add garment
               </button>
             </form>
@@ -73,6 +76,17 @@ function ModalWithForm(props) {
       </Modal>
     </div>
   );
+
+  function submitHandler() {
+    const name = document.getElementById("name-input").value;
+    const link = document.getElementById("link-input").value;
+    const weatherNodes = document.getElementsByName("weather");
+    const weatherArray = [].slice.call(weatherNodes, 0);
+    const weather = weatherArray.filter((el) => el.checked)[0].value;
+    props.addItem(name, link, weather);
+    props.setVisibility(false);
+    document.forms[0].reset();
+  }
 }
 
 export default ModalWithForm;

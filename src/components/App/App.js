@@ -18,6 +18,7 @@ import React from "react";
 function App() {
   const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
   const [weather, updateWeather] = React.useState();
+  const [clothes, updateClothes] = React.useState(defaultClothingItems);
   
   const [itemModalVisible, setItemModalVis] = React.useState(false);
   const [itemModalInfo, setItemModalInfo] = React.useState({});
@@ -62,7 +63,7 @@ function App() {
         />
         <Main weatherImage={weatherImage}
           temperature={temperature+"°F"}
-          cards={defaultClothingItems}
+          cards={clothes}
           tempType={tempType}
           setItemModalVis={setItemModalVis}
           setItemModalInfo={setItemModalInfo}
@@ -76,6 +77,7 @@ function App() {
         <ModalWithForm 
           setVisibility={setAddModalVis}
           isVisible={addModalVisible}
+          addItem={addItem}
         />
       </div>
     );
@@ -112,6 +114,18 @@ function App() {
     const currentTime = Date.now();
     return currentTime >= sunrise * 1000 && 
       currentTime < sunset * 1000;
+  }
+
+  function addItem(name, link, weather) {
+    const len = clothes.length;
+    updateClothes(clothes.concat([
+      {
+        _id: len,
+        name: name,
+        link: link,
+        weather: weather,
+      }
+    ]))
   }
 }
 
