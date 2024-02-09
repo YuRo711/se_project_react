@@ -5,6 +5,9 @@
 @import url("./components/WeatherCard/WeatherCard.css");
 @import url("./components/ItemCard/ItemCard.css");
 @import url("./components/Footer/Footer.css");
+@import url("./components/Modal/Modal.css");
+@import url("./components/ModalWithForm/ModalWithForm.css");
+@import url("./components/ItemModal/ItemModal.css");
 
 body {
   margin: 0;

@@ -1,0 +1,30 @@
+.ItemModal__container {
+    position: relative;
+    width: 498px;
+    height: 610px;
+    border-radius: 16px;
+    background-color: #FFF;
+    overflow: hidden;
+}
+
+.ItemModal__image {
+    width: 100%;
+}
+
+.ItemModal__name {
+    margin-top: 20px;
+    margin-left: 32px;
+    font-family: 'Cabinet Grotesk';
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;    
+}
+
+.ItemModal__weather {
+    margin-top: 12px;
+    margin-left: 32px;
+    font-family: 'Cabinet Grotesk';
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px; 
+}

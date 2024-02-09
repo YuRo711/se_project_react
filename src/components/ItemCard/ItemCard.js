@@ -4,9 +4,14 @@ function ItemCard(props) {
     // How do I deal with it?
     if (!data)
         return;
+    
 
     return (
-      <div className="ItemCard">
+      <div className="ItemCard" 
+        onClick={() => {
+          props.setItemModalVis(true);
+          props.setItemModalInfo(data);
+      }}>
         <img className="ItemCard__image"
             src={data.link}
         ></img>

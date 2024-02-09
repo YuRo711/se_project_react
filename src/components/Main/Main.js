@@ -19,7 +19,10 @@ function Main(props) {
               .map((card, i) => (
                 <ItemCard
                   key={i}
-                  data={card} />
+                  data={card}
+                  setItemModalVis={props.setItemModalVis}
+                  setItemModalInfo={props.setItemModalInfo}
+                />
               ))
           }
           <ItemCard />

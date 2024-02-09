@@ -7,6 +7,7 @@
     overflow: hidden;
     border-radius: 19px;
     border: solid 1px #0000004D;
+    cursor: pointer;
 }
 
 .ItemCard__image {

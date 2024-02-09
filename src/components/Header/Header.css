@@ -18,6 +18,7 @@
     background: none;
     box-shadow: none;
     outline: none;
+    cursor: pointer;
     font-family: 'Cabinet Grotesk';
     font-size: 20px;
     font-weight: 700;

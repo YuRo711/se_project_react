@@ -10,12 +10,16 @@ import {
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer.js";
+import ItemModal from "../ItemModal/ItemModal.js"
 import React from "react";
 
 
 function App() {
   const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
   const [weather, updateWeather] = React.useState();
+  
+  const [itemModalVisible, setItemModalVis] = React.useState(false);
+  const [itemModalInfo, setItemModalInfo] = React.useState({});
 
   React.useEffect(() => {
     fetch(
@@ -57,11 +61,18 @@ function App() {
           temperature={temperature+"°F"}
           cards={defaultClothingItems}
           tempType={tempType}
+          setItemModalVis={setItemModalVis}
+          setItemModalInfo={setItemModalInfo}
         />
         <Footer />
+        <ItemModal
+          setVisibility={setItemModalVis}
+          isVisible={itemModalVisible}
+          data={itemModalInfo}
+        />
         {/*
         <ModalWithForm />
-        <ItemModal /> */}
+        */}
       </div>
     );
   }

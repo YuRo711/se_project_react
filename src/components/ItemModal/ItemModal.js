@@ -1,20 +1,36 @@
+import Modal from "../Modal/Modal";
+
 function ItemModal(props) {
-    const image = props.link;
-    const name = props.name;
-    const weather = props.name;
+    const image = props.data.link;
+    const name = props.data.name;
+    const weather = props.data.weather;
 
     return (
       <div className="ItemModal">
-        <button type="button" className="ItemModal__close-button"></button>
-        <div className="ItemModal__image-wrapper">
+        <Modal
+          isVisible={props.isVisible}
+          setVisibility={props.setVisibility}
+        >
+          <div className="ItemModal__container">
+            <button type="button"
+              className="Modal__close-button"
+              onClick={() => {
+                props.setVisibility(false);
+              }}
+            ></button>
             <img className="ItemModal__image"
-                src={image}
+              src={image}
             />
-        </div>
-        <div className="ItemModal__name">{name}</div>
-        <div className="ItemModal__weather">Weather: {weather}</div>
+            <div className="ItemModal__name">{name}</div>
+            <div className="ItemModal__weather">Weather: {weather}</div>
+          </div>
+        </Modal>
       </div>
     );
+
+    function openImageModal() {
+      
+    }
   }
   
   export default ItemModal;
