@@ -30,6 +30,7 @@
 }
 
 .Modal__close-button {
+    z-index: 4;
     position: absolute;
     left: 454px;
     top: 16px;
@@ -40,5 +41,12 @@
     background: none;
     box-shadow: none;
     cursor: pointer;
-    background-image: url("../../images/close\ button.svg");
+}
+
+.Modal__close-button_white {
+    background-image: url("../../images/close\ button\ white.svg");
+}
+
+.Modal__close-button_gray {
+    background-image: url("../../images/close\ button\ gray.svg");
 }

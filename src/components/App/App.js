@@ -7,10 +7,11 @@ import {
   weatherImagesDay,
   weatherImagesNight,
 } from "../../utils/constants.js";
-import Header from "../Header/Header";
-import Main from "../Main/Main";
+import Header from "../Header/Header.js";
+import Main from "../Main/Main.js";
 import Footer from "../Footer/Footer.js";
-import ItemModal from "../ItemModal/ItemModal.js"
+import ItemModal from "../ItemModal/ItemModal.js";
+import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
 import React from "react";
 
 
@@ -20,6 +21,7 @@ function App() {
   
   const [itemModalVisible, setItemModalVis] = React.useState(false);
   const [itemModalInfo, setItemModalInfo] = React.useState({});
+  const [addModalVisible, setAddModalVis] = React.useState(false);
 
   React.useEffect(() => {
     fetch(
@@ -54,6 +56,7 @@ function App() {
     return (
       <div className="App">
         <Header 
+          setAddModalVis={setAddModalVis}
           locationName={locationName}
           currentDate={currentDate}
         />
@@ -70,9 +73,10 @@ function App() {
           isVisible={itemModalVisible}
           data={itemModalInfo}
         />
-        {/*
-        <ModalWithForm />
-        */}
+        <ModalWithForm 
+          setVisibility={setAddModalVis}
+          isVisible={addModalVisible}
+        />
       </div>
     );
   }

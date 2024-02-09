@@ -1,0 +1,129 @@
+input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+  }
+  
+
+.ModalWithForm__container {
+    position: relative;
+    width: 496px;
+    height: 436px;
+    border-radius: 20px;
+    background-color: #FFF;
+    box-sizing: border-box;
+    padding: 28px 0 0 28px
+}
+
+.ModalWithForm__title {
+    font-family: 'Cabinet Grotesk';
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    margin-bottom: 24px;
+}
+
+.ModalWithForm__label {
+    font-family: 'Cabinet Grotesk';
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    margin-bottom: 8px;
+}
+
+.ModalWithForm__label_radio {
+    margin-bottom: 0;
+}
+
+.ModalWithForm__input {
+    width: 440px;
+    border: none;
+    border-bottom: #000 solid 1px;
+    padding: 6px 0;
+    margin-bottom: 24px;
+    font-family: 'Cabinet Grotesk';
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.ModalWithForm__input::placeholder {
+    font-family: 'Cabinet Grotesk';
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.ModalWithForm__radio {
+    display: inline-flex;
+    margin: 0 0 8px;
+    align-items: center;
+}
+
+.ModalWithForm__radio-buttons {
+    margin-top: 12px;
+}
+
+.ModalWithForm__radio-button {
+    margin: 0 8px 8px 0;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    border: #000 solid 1px;
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+.ModalWithForm__radio-button:checked {
+    opacity: 1;
+}
+
+.ModalWithForm__radio-button::before {
+    content: "";
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    margin: 2px;
+    display: block;
+}
+
+.ModalWithForm__radio-button:checked::before {
+    background-color: #000;
+}
+
+.ModalWithForm__radio-button:checked + .ModalWithForm__radio-label {
+    opacity: 1;
+}
+
+.ModalWithForm__radio-label {
+    margin-left: 8px;
+    font-family: 'Cabinet Grotesk';
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    opacity: 0.5;
+}
+
+.ModalWithForm__submit-button {
+    margin-top: 32px;
+    background-color: #000;
+    color: #FFF;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-family: 'Cabinet Grotesk';
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.ModalWithForm__submit-button:hover {
+    opacity: 0.6;
+}
+
+.ModalWithForm__submit-button:disabled {
+    opacity: 0.3;
+}

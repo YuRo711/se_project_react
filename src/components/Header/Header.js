@@ -11,7 +11,10 @@ function Header(props) {
         <div className="Header__date-place">
             {props.currentDate}, {props.locationName}
         </div>
-        <button className="Header__add-button">
+        <button 
+            className="Header__add-button"
+            onClick={() => { props.setAddModalVis(true); }}
+        >
             + Add clothes
         </button>
         <div className="Header__user">

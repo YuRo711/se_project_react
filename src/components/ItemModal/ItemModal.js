@@ -13,7 +13,7 @@ function ItemModal(props) {
         >
           <div className="ItemModal__container">
             <button type="button"
-              className="Modal__close-button"
+              className="Modal__close-button Modal__close-button_white"
               onClick={() => {
                 props.setVisibility(false);
               }}
