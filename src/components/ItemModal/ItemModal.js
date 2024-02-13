@@ -1,4 +1,5 @@
 import Modal from "../Modal/Modal";
+import "./ItemModal.css";
 
 function ItemModal(props) {
     const image = props.data.link;

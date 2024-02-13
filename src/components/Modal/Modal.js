@@ -1,3 +1,5 @@
+import "./Modal.css";
+
 function Modal(props) {
   const isVisible = props.isVisible;
   const setVisibility = props.setVisibility;

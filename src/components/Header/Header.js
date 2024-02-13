@@ -1,5 +1,6 @@
 import logo from "../../images/Logo.svg";
 import avatar from "../../images/avatar.svg";
+import "./Header.css";
 
 function Header(props) {
     return (

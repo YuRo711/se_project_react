@@ -1,4 +1,5 @@
 import Modal from "../Modal/Modal";
+import "./ModalWithForm.css";
 
 function ModalWithForm(props) {
   return (

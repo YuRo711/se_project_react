@@ -13,6 +13,7 @@ import Footer from "../Footer/Footer.js";
 import ItemModal from "../ItemModal/ItemModal.js";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
 import React from "react";
+import "./App.css";
 
 
 function App() {

@@ -1,3 +1,5 @@
+import "./ItemCard.css";
+
 function ItemCard(props) {
     const data = props.data;
     // For some reason, there's an extra card where data is undefined.
