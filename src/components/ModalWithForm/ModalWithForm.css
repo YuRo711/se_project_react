@@ -6,7 +6,7 @@ input[type="radio"] {
   }
   
 
-.ModalWithForm__container {
+.modal_type_form__container {
     position: relative;
     width: 496px;
     height: 436px;
@@ -16,7 +16,7 @@ input[type="radio"] {
     padding: 28px 0 0 28px
 }
 
-.ModalWithForm__title {
+.modal_type_form__title {
     font-family: 'Cabinet Grotesk';
     font-size: 16px;
     font-weight: 700;
@@ -24,7 +24,7 @@ input[type="radio"] {
     margin-bottom: 24px;
 }
 
-.ModalWithForm__label {
+.modal_type_form__label {
     font-family: 'Cabinet Grotesk';
     font-size: 16px;
     font-weight: 700;
@@ -32,11 +32,16 @@ input[type="radio"] {
     margin-bottom: 8px;
 }
 
-.ModalWithForm__label_radio {
+.modal_type_form__radio-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal_type_form__label_radio {
     margin-bottom: 0;
 }
 
-.ModalWithForm__input {
+.modal_type_form__input {
     width: 440px;
     border: none;
     border-bottom: #000 solid 1px;
@@ -48,24 +53,24 @@ input[type="radio"] {
     line-height: 20px;
 }
 
-.ModalWithForm__input::placeholder {
+.modal_type_form__input::placeholder {
     font-family: 'Cabinet Grotesk';
     font-size: 16px;
     font-weight: 700;
     line-height: 20px;
 }
 
-.ModalWithForm__radio {
+.modal_type_form__radio {
     display: inline-flex;
     margin: 0 0 8px;
     align-items: center;
 }
 
-.ModalWithForm__radio-buttons {
+.modal_type_form__radio-buttons {
     margin-top: 12px;
 }
 
-.ModalWithForm__radio-button {
+.modal_type_form__radio-button {
     margin: 0 8px 8px 0;
     cursor: pointer;
     width: 16px;
@@ -75,11 +80,11 @@ input[type="radio"] {
     opacity: 0.5;
 }
 
-.ModalWithForm__radio-button:checked {
+.modal_type_form__radio-button:checked {
     opacity: 1;
 }
 
-.ModalWithForm__radio-button::before {
+.modal_type_form__radio-button::before {
     content: "";
     border-radius: 50%;
     height: 10px;
@@ -88,15 +93,15 @@ input[type="radio"] {
     display: block;
 }
 
-.ModalWithForm__radio-button:checked::before {
+.modal_type_form__radio-button:checked::before {
     background-color: #000;
 }
 
-.ModalWithForm__radio-button:checked + .ModalWithForm__radio-label {
+.modal_type_form__radio-button:checked + .modal_type_form__radio-label {
     opacity: 1;
 }
 
-.ModalWithForm__radio-label {
+.modal_type_form__radio-label {
     margin-left: 8px;
     font-family: 'Cabinet Grotesk';
     font-size: 16px;
@@ -105,7 +110,7 @@ input[type="radio"] {
     opacity: 0.5;
 }
 
-.ModalWithForm__submit-button {
+.modal_type_form__submit-button {
     margin-top: 32px;
     background-color: #000;
     color: #FFF;
@@ -120,10 +125,10 @@ input[type="radio"] {
     cursor: pointer;
 }
 
-.ModalWithForm__submit-button:hover {
+.modal_type_form__submit-button:hover {
     opacity: 0.6;
 }
 
-.ModalWithForm__submit-button:disabled {
+.modal_type_form__submit-button:disabled {
     opacity: 0.3;
 }

@@ -21,7 +21,7 @@ function Main(props) {
                 <ItemCard
                   key={i}
                   data={card}
-                  setItemModalVis={props.setItemModalVis}
+                  openModalHandler={props.openModalHandler}
                   setItemModalInfo={props.setItemModalInfo}
                 />
               ))

@@ -4,23 +4,25 @@ import "./Header.css";
 
 function Header(props) {
     return (
-      <div className="Header">
-        <img className="Header__logo"
+      <div className="header">
+        <img className="header__logo"
             src={logo}
             alt="WTWR logo"
         ></img>
-        <div className="Header__date-place">
+        <div className="header__date-place">
             {props.currentDate}, {props.locationName}
         </div>
         <button 
-            className="Header__add-button"
-            onClick={() => { props.setAddModalVis(true); }}
+            className="header__add-button"
+            onClick={() => { 
+                props.openModalHandler("add");
+             }}
         >
             + Add clothes
         </button>
-        <div className="Header__user">
-            <div className="Header__user-name">Terrence Tegegne</div>
-            <img className="Header__user-avatar"
+        <div className="header__user">
+            <p className="header__user-name">Terrence Tegegne</p>
+            <img className="header__user-avatar"
                 src={avatar}
                 alt="user avatar"
             ></img>

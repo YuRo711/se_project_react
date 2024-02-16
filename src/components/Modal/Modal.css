@@ -1,4 +1,4 @@
-.Modal {
+.modal {
     position: fixed;
     display: flex;
     visibility: hidden;
@@ -14,22 +14,19 @@
     transition: visibility 0s 0.3s, opacity 0.3s linear;
 }
 
-.Modal_opened {
+.modal_opened {
     visibility: visible;
     opacity: 1;
     transition: visibility 0s, opacity 0.3s linear;
 }
 
-.Modal {
-    position: fixed;
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    z-index: 3;
-    background-color: rgba(0, 0, 0, 0.5);
+.modal__container {
+    position: relative;
+    background-color: #FFF;
+    overflow: hidden;
 }
 
-.Modal__close-button {
+.modal__close-button {
     z-index: 4;
     position: absolute;
     left: 454px;
@@ -43,10 +40,10 @@
     cursor: pointer;
 }
 
-.Modal__close-button_white {
+.modal__close-button_white {
     background-image: url("../../images/close\ button\ white.svg");
 }
 
-.Modal__close-button_gray {
+.modal__close-button_gray {
     background-image: url("../../images/close\ button\ gray.svg");
 }

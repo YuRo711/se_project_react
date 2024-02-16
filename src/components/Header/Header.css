@@ -1,4 +1,4 @@
-.Header {
+.header {
     display: flex;
     align-items: center;
     font-family: 'Cabinet Grotesk';
@@ -8,11 +8,11 @@
     padding-bottom: 28px;
 }
 
-.Header__date-place {
+.header__date-place {
     margin-left: 16px;
 }
 
-.Header__add-button {
+.header__add-button {
     margin-left: auto;
     border: none;
     background: none;
@@ -25,12 +25,16 @@
     line-height: 24px;
 }
 
-.Header__user {
+.header__user {
     display: flex;
     align-items: center;
     margin-left: 20px;
 }
 
-.Header__user-avatar {
+.header__user-name {
+    margin: 0;
+}
+
+.header__user-avatar {
     margin-left: 12px;
 }

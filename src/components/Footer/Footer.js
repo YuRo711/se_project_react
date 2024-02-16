@@ -1,10 +1,10 @@
-
+import "./Footer.css";
 
 function Footer(props) {
     return (
-      <div className="Footer">
-        <div className="Footer__copyright">Developed by Yuri Rokhlin</div>
-        <div className="Footer__year">2024</div>
+      <div className="footer">
+        <div className="footer__copyright">Developed by Yuri Rokhlin</div>
+        <div className="footer__year">{new Date().getFullYear()}</div>
       </div>
     );
   }

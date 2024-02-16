@@ -1,4 +1,4 @@
-.Footer {
+.footer {
     margin-top: auto;
     display: flex;
     padding-bottom: 24px;
@@ -8,6 +8,6 @@
     line-height: 20px;
 }
 
-.Footer__year {
+.footer__year {
     margin-left: auto;
 }
