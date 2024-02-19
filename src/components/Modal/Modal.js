@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./Modal.css";
 
-export const Modal = ({ name, onClose, closeButtonClass, type, children }) => {
+export const Modal = ({ name, onClose, closeButtonClass, type, modalsOpened, children }) => {
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") {
@@ -21,7 +21,9 @@ export const Modal = ({ name, onClose, closeButtonClass, type, children }) => {
   };
 
   return (
-    <div className={`modal modal_type_${type}`}
+    <div className={modalsOpened[name] ? 
+          `modal modal_type_${type} modal_opened` : 
+          `modal modal_type_${type}`}
         id={name}
         onClick={handleOverlay}
     >

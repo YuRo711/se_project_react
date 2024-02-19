@@ -8,7 +8,6 @@ import Header from "../Header/Header.js";
 import Main from "../Main/Main.js";
 import Footer from "../Footer/Footer.js";
 import ItemModal from "../ItemModal/ItemModal.js";
-import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
 import WeatherApi from "../../utils/weatherApi.js";
 import React from "react";
 import "./App.css";
@@ -22,6 +21,10 @@ function App() {
   const [weather, updateWeather] = React.useState(null);
   const [clothes, updateClothes] = React.useState(defaultClothingItems);
   const [itemModalInfo, setItemModalInfo] = React.useState({});
+  const [modalsOpened, setModalsActivity] = React.useState({
+    "item": false,
+    "add": false,
+  });
 
   React.useEffect(() => {
     api.getWeather()
@@ -58,12 +61,14 @@ function App() {
           closeHandler={handleModalClose}
           modalId="item"
           closeButtonClass="modal__close-button_white"
+          modalsOpened={modalsOpened}
         />
         <NewItemModal 
           addItem={addItem}
           closeHandler={handleModalClose}
           modalId="add"
           closeButtonClass="modal__close-button_gray"
+          modalsOpened={modalsOpened}
         />
       </div>
     );
@@ -82,11 +87,11 @@ function App() {
   }
 
   function handleModalClose(modalId) {
-    document.querySelector(`#${modalId}`).classList.remove("modal_opened");
+    setModalsActivity({...modalsOpened, [modalId]: false});
   }
 
   function handleModalOpen(modalId) {
-    document.querySelector(`#${modalId}`).classList.add("modal_opened");
+    setModalsActivity({...modalsOpened, [modalId]: true});
   }
 }
 

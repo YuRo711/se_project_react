@@ -1,15 +1,15 @@
-.Main {
+.main {
     padding-bottom: 85px;
 }
 
-.Main__text {
+.main__text {
     font-family: Cabinet Grotesk;
     font-size: 20px;
     font-weight: 700;
     line-height: 25px;
 }
 
-.Main__cards {
+.main__cards {
     padding-top: 34px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);

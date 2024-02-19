@@ -9,6 +9,7 @@ function NewItemModal(props) {
       title="New garment"
       buttonText="Add garment"
       onSubmit={submitHandler}
+      modalsOpened={props.modalsOpened}
     >
       <label className="modal_type_form__label" htmlFor="name-input">Name</label>
       <input type="text"

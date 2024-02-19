@@ -4,15 +4,15 @@ import "./Main.css";
 
 function Main(props) {
     return (
-      <div className="Main">
+      <div className="main">
         <WeatherCard 
           weatherImage={props.weatherImage}
           temperature={props.temperature} 
         />
-        <div className="Main__text">
+        <div className="main__text">
           Today is {props.temperature} / You may want to wear:
         </div>
-        <div className="Main__cards">
+        <div className="main__cards">
           {
             props.cards.filter(
                 (card) => card.weather == props.tempType

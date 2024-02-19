@@ -13,6 +13,7 @@ function ItemModal(props) {
         onClose={props.closeHandler}
         closeButtonClass={props.closeButtonClass}
         type="item"
+        modalsOpened={props.modalsOpened}
       >
         <img className="modal_type_item__image"
           src={image}
