@@ -4,7 +4,7 @@ import "./Header.css";
 
 function Header(props) {
     return (
-      <div className="header">
+      <header className="header">
         <img className="header__logo"
             src={logo}
             alt="WTWR logo"
@@ -27,7 +27,7 @@ function Header(props) {
                 alt="user avatar"
             ></img>
         </div>
-      </div>
+      </header>
     );
   }
   

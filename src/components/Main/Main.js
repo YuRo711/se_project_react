@@ -4,7 +4,7 @@ import "./Main.css";
 
 function Main(props) {
     return (
-      <div className="main">
+      <main className="main">
         <WeatherCard 
           weatherImage={props.weatherImage}
           temperature={props.temperature} 
@@ -19,7 +19,7 @@ function Main(props) {
               )
               .map((card, i) => (
                 <ItemCard
-                  key={i}
+                  key={card._id}
                   data={card}
                   openModalHandler={props.openModalHandler}
                   setItemModalInfo={props.setItemModalInfo}
@@ -28,7 +28,7 @@ function Main(props) {
           }
           <ItemCard />
         </div>
-      </div>
+      </main>
     );
   }
   
