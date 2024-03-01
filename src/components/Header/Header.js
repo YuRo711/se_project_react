@@ -1,6 +1,7 @@
 import logo from "../../images/Logo.svg";
 import avatar from "../../images/avatar.svg";
 import "./Header.css";
+import CheckSwitch from "../CheckSwitch/CheckSwitch";
 
 function Header(props) {
     return (
@@ -12,6 +13,10 @@ function Header(props) {
         <div className="header__date-place">
             {props.currentDate}, {props.locationName}
         </div>
+        <CheckSwitch
+            icon-left="F"
+            icon-right="C"
+        />
         <button 
             className="header__add-button"
             onClick={() => { 

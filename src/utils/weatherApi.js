@@ -20,9 +20,14 @@ export default class WeatherApi
         const weatherId = json.weather[0].id;
         const weatherType = this._getWeatherType(weatherId);
         const dayTime = this._isDayTime(json.sys.sunrise, json.sys.sunset);
+        const tempF = `${temperature}°F`;
+        const tempC = `${Math.round((temperature- 32) * 5/9)}°C`;
 
         return {
-          temperature: temperature,
+          temperature: {
+            F: tempF,
+            C: tempC,
+          },
           tempType: tempType,
           weatherType: weatherType,
           dayTime: dayTime,

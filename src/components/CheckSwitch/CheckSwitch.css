@@ -1,0 +1,89 @@
+.switch-checkbox {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.switch-label {
+  margin: 0 20px 0 auto;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background: #fff;
+  position: relative;
+  width: 56px;
+  height: 28px;
+  border-radius: 20px;
+  border: 2px solid #7E7E7E;
+  transition: border 0.2s ease-in-out;
+}
+
+.switch-label:hover {
+  border: 2px solid #000;
+}
+
+.switch-label .switch-button {
+  position: absolute;
+  width: 28px;
+  left: -2px;
+  height: 28px;
+  border-radius: 20px;
+  border-radius: 45px;
+  border: none;
+  transition: 0.2s;
+  background: #000;
+}
+
+.switch-label:hover .switch-button {
+  left: 0;
+}
+
+.switch-checkbox:checked ~ .switch-label:hover .switch-button {
+  left: 100%;
+}
+
+.switch-checkbox:checked ~ .switch-label .switch-button {
+  left: calc(100% + 2px);
+  transform: translateX(-100%);
+}
+
+.switch-icon {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  font-family: "Cabinet Grotesk";
+  font-size: 14px;
+  font-weight: 700;
+  color: #7E7E7E;
+  z-index: 1;
+  transition: color 0.2s ease-in-out;
+}
+
+.switch-icon_left {
+  left: -2px;
+}
+
+.switch-icon_right {
+  left: 26px;
+}
+
+.switch-checkbox:not(:checked) ~ .switch-label .switch-icon_left {
+  color: #fff;
+}
+
+.switch-checkbox:checked ~ .switch-label .switch-icon_right {
+  color: #fff;
+}
+
+.switch-checkbox:checked ~ .switch-label:hover .switch-icon_left {
+  color: #000;
+}
+
+.switch-checkbox:not(:checked) ~ .switch-label:hover .switch-icon_right {
+  color: #000;
+}

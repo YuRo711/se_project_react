@@ -1,8 +1,6 @@
 import { 
   defaultClothingItems,
   locationName,
-  weatherImagesDay,
-  weatherImagesNight,
 } from "../../utils/constants.js";
 import Header from "../Header/Header.js";
 import Main from "../Main/Main.js";
@@ -12,6 +10,7 @@ import WeatherApi from "../../utils/weatherApi.js";
 import React from "react";
 import "./App.css";
 import NewItemModal from "../NewItemModal/NewItemModal.js";
+import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUnitContext.js";
 
 
 function App() {
@@ -25,6 +24,7 @@ function App() {
     "item": false,
     "add": false,
   });
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
 
   React.useEffect(() => {
     api.getWeather()
@@ -35,44 +35,49 @@ function App() {
   }, []);
 
   if (!weather) {
-    return <div className="App">Loading...</div>
+    return <div className="page">Loading...</div>
   } else {
-    const weatherImage = weather.dayTime ?
-      weatherImagesDay[weather.weatherType] :
-      weatherImagesNight[weather.weatherType];
-
     return (
-      <div className="App">
-        <Header 
-          locationName={locationName}
-          currentDate={currentDate}
-          openModalHandler={handleModalOpen}
-        />
-        <Main weatherImage={weatherImage}
-          temperature={weather.temperature+"°F"}
-          cards={clothes}
-          tempType={weather.tempType}
-          setItemModalInfo={setItemModalInfo}
-          openModalHandler={handleModalOpen}
-        />
-        <Footer />
-        <ItemModal
-          data={itemModalInfo}
-          closeHandler={handleModalClose}
-          modalId="item"
-          closeButtonClass="modal__close-button_white"
-          modalsOpened={modalsOpened}
-        />
-        <NewItemModal 
-          addItem={addItem}
-          closeHandler={handleModalClose}
-          modalId="add"
-          closeButtonClass="modal__close-button_gray"
-          modalsOpened={modalsOpened}
-        />
+      <div className="page">
+        <CurrentTemperatureUnitContext.Provider
+          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+        >
+          <Header 
+            locationName={locationName}
+            currentDate={currentDate}
+            openModalHandler={handleModalOpen}
+          />
+          <Main
+            weather={weather}
+            cards={clothes}
+            setItemModalInfo={setItemModalInfo}
+            openModalHandler={handleModalOpen}
+          />
+          <Footer />
+          <ItemModal
+            data={itemModalInfo}
+            closeHandler={handleModalClose}
+            modalId="item"
+            closeButtonClass="modal__close-button_white"
+            modalsOpened={modalsOpened}
+          />
+          <NewItemModal 
+            addItem={addItem}
+            closeHandler={handleModalClose}
+            modalId="add"
+            closeButtonClass="modal__close-button_gray"
+            modalsOpened={modalsOpened}
+          />
+        </CurrentTemperatureUnitContext.Provider>
       </div>
     );
   }
+
+  function handleToggleSwitchChange() {
+    currentTemperatureUnit === 'F'
+      ? setCurrentTemperatureUnit('C')
+      : setCurrentTemperatureUnit('F');
+  };
 
   function addItem(name, link, weather) {
     const len = clothes.length;
