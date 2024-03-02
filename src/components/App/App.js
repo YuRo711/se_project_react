@@ -4,6 +4,7 @@ import {
 } from "../../utils/constants.js";
 import Header from "../Header/Header.js";
 import Main from "../Main/Main.js";
+import Profile from "../Profile/Profile.js";
 import Footer from "../Footer/Footer.js";
 import ItemModal from "../ItemModal/ItemModal.js";
 import WeatherApi from "../../utils/weatherApi.js";
@@ -11,6 +12,7 @@ import React from "react";
 import "./App.css";
 import NewItemModal from "../NewItemModal/NewItemModal.js";
 import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUnitContext.js";
+import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min.js";
 
 
 function App() {
@@ -47,12 +49,19 @@ function App() {
             currentDate={currentDate}
             openModalHandler={handleModalOpen}
           />
-          <Main
-            weather={weather}
-            cards={clothes}
-            setItemModalInfo={setItemModalInfo}
-            openModalHandler={handleModalOpen}
-          />
+          <Switch>
+            <Route path="/profile">
+              <Profile/>
+            </Route>
+            <Route path="/">
+              <Main
+                weather={weather}
+                cards={clothes}
+                setItemModalInfo={setItemModalInfo}
+                openModalHandler={handleModalOpen}
+              />
+            </Route>
+          </Switch>
           <Footer />
           <ItemModal
             data={itemModalInfo}
