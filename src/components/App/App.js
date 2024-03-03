@@ -51,7 +51,9 @@ function App() {
           />
           <Switch>
             <Route path="/profile">
-              <Profile/>
+              <Profile
+                cards={clothes}
+              />
             </Route>
             <Route path="/">
               <Main

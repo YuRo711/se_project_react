@@ -8,6 +8,7 @@
 @import url("./components/Modal/Modal.css");
 @import url("./components/ModalWithForm/ModalWithForm.css");
 @import url("./components/ItemModal/ItemModal.css");
+@import url("./components/Profile/Profile.css");
 
 body {
   margin: 0;
