@@ -2,7 +2,7 @@ import "./ItemModal.css";
 import { Modal } from "../Modal/Modal";
 
 function ItemModal(props) {
-    const image = props.data.link;
+    const image = props.data.imageUrl;
     const name = props.data.name;
     const weather = props.data.weather;
 
@@ -23,7 +23,9 @@ function ItemModal(props) {
             <p className="modal_type_item__name">{name}</p>
             <p className="modal_type_item__weather">Weather: {weather}</p>
           </div>
-            <button className="modal_type_item__delete" onClick={props.handleCardDelete}>
+            <button className="modal_type_item__delete"onClick={() => {
+              props.handleCardDelete(props.data._id);
+            }}>
               Delete item
             </button>
         </div>

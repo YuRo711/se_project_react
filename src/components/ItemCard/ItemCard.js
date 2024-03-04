@@ -12,7 +12,7 @@ function ItemCard(props) {
           props.setItemModalInfo(data);
       }}>
         <img className="ItemCard__image"
-            src={data.link}
+            src={data.imageUrl}
             alt={data.name}
         ></img>
         <div className="ItemCard__name">{data.name}</div>

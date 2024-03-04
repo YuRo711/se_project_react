@@ -1,5 +1,4 @@
-import { 
-  defaultClothingItems,
+import {
   locationName,
 } from "../../utils/constants.js";
 import Header from "../Header/Header.js";
@@ -7,20 +6,22 @@ import Main from "../Main/Main.js";
 import Profile from "../Profile/Profile.js";
 import Footer from "../Footer/Footer.js";
 import ItemModal from "../ItemModal/ItemModal.js";
-import WeatherApi from "../../utils/weatherApi.js";
-import React, { useRef, useState } from "react";
-import "./App.css";
 import AddItemModal from "../AddItemModal/AddItemModal.js";
+import React, { useState, useEffect } from "react";
+import "./App.css";
 import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUnitContext.js";
 import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min.js";
+import WeatherApi from "../../utils/weatherApi.js";
+import Api from "../../utils/api.js";
 
 
 function App() {
   const currentDate = 
     new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
-  const api = new WeatherApi();
+  const weatherApi = new WeatherApi();
+  const api = new Api();
   const [weather, updateWeather] = useState(null);
-  const [clothes, updateClothes] = useState(defaultClothingItems);
+  const [clothes, updateClothes] = useState(null);
   const [itemModalInfo, setItemModalInfo] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
   const [modalsActivity, setModalsActivity] = useState({
@@ -29,15 +30,21 @@ function App() {
     "delete": false,
   });
 
-  React.useEffect(() => {
-    api.getWeather()
+  useEffect(() => {
+    api.getItems()
+      .then((items) => {
+        updateClothes(items);
+      })
+      .catch((err) => { console.log(err); });
+      
+    weatherApi.getWeather()
       .then((weatherData) => {
         updateWeather(weatherData);
       })
       .catch((err) => { console.log(err); });
   }, []);
 
-  if (!weather) {
+  if (!weather || !clothes) {
     return <div className="page">Loading...</div>
   } else {
     return (
@@ -99,14 +106,17 @@ function App() {
     const newItem = {
       _id: len,
       name: name,
-      link: link,
+      imageUrl: link,
       weather: weather,
     };
-    updateClothes([item, ...clothes]);
+    updateClothes([newItem, ...clothes]);
+    api.addItem(newItem);
   }
 
-  function handleCardDelete() {
+  function handleCardDelete(id) {
     handleModalClose("item");
+    updateClothes(clothes.filter(item => item._id != id));
+    api.deleteItem(id);
   }
 
   function handleModalClose(modalId) {

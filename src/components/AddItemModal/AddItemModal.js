@@ -67,8 +67,7 @@ function AddItemModal(props) {
     </ModalWithForm>
   );
 
-  function submitHandler(event) {
-    event.preventDefault();
+  function submitHandler() {
     const name = document.getElementById("name-input").value;
     const link = document.getElementById("link-input").value;
     const weatherNodes = document.getElementsByName("weather");
