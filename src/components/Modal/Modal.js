@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./Modal.css";
 
-export const Modal = ({ name, onClose, closeButtonClass, type, modalsOpened, children }) => {
+export const Modal = ({ name, onClose, closeButtonClass, type, isOpen, children }) => {
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") {
@@ -21,7 +21,7 @@ export const Modal = ({ name, onClose, closeButtonClass, type, modalsOpened, chi
   };
 
   return (
-    <div className={modalsOpened[name] ? 
+    <div className={isOpen ? 
           `modal modal_type_${type} modal_opened` : 
           `modal modal_type_${type}`}
         id={name}

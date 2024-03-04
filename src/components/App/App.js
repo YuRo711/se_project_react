@@ -10,7 +10,7 @@ import ItemModal from "../ItemModal/ItemModal.js";
 import WeatherApi from "../../utils/weatherApi.js";
 import React from "react";
 import "./App.css";
-import NewItemModal from "../NewItemModal/NewItemModal.js";
+import AddItemModal from "../AddItemModal/AddItemModal.js";
 import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUnitContext.js";
 import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min.js";
 
@@ -22,10 +22,6 @@ function App() {
   const [weather, updateWeather] = React.useState(null);
   const [clothes, updateClothes] = React.useState(defaultClothingItems);
   const [itemModalInfo, setItemModalInfo] = React.useState({});
-  const [modalsOpened, setModalsActivity] = React.useState({
-    "item": false,
-    "add": false,
-  });
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
 
   React.useEffect(() => {
@@ -70,14 +66,14 @@ function App() {
             closeHandler={handleModalClose}
             modalId="item"
             closeButtonClass="modal__close-button_white"
-            modalsOpened={modalsOpened}
+            isOpen={false}
           />
-          <NewItemModal 
+          <AddItemModal 
             addItem={addItem}
             closeHandler={handleModalClose}
             modalId="add"
             closeButtonClass="modal__close-button_gray"
-            modalsOpened={modalsOpened}
+            isOpen={false}
           />
         </CurrentTemperatureUnitContext.Provider>
       </div>
@@ -92,14 +88,13 @@ function App() {
 
   function addItem(name, link, weather) {
     const len = clothes.length;
-    updateClothes(clothes.concat([
-      {
-        _id: len,
-        name: name,
-        link: link,
-        weather: weather,
-      }
-    ]))
+    const newItem = {
+      _id: len,
+      name: name,
+      link: link,
+      weather: weather,
+    };
+    updateClothes([item, ...clothes]);
   }
 
   function handleModalClose(modalId) {

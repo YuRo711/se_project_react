@@ -1,6 +1,6 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function NewItemModal(props) {
+function AddItemModal(props) {
   return (
     <ModalWithForm
       name={props.modalId}
@@ -9,7 +9,7 @@ function NewItemModal(props) {
       title="New garment"
       buttonText="Add garment"
       onSubmit={submitHandler}
-      modalsOpened={props.modalsOpened}
+      isOpen={props.isOpen}
     >
       <label className="modal_type_form__label" htmlFor="name-input">Name</label>
       <input type="text"
@@ -67,7 +67,8 @@ function NewItemModal(props) {
     </ModalWithForm>
   );
 
-  function submitHandler() {
+  function submitHandler(event) {
+    event.preventDefault();
     const name = document.getElementById("name-input").value;
     const link = document.getElementById("link-input").value;
     const weatherNodes = document.getElementsByName("weather");
@@ -79,4 +80,4 @@ function NewItemModal(props) {
   }
 }
 
-export default NewItemModal;
+export default AddItemModal;

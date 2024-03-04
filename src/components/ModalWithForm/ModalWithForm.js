@@ -8,7 +8,7 @@ function ModalWithForm(props) {
         onClose={props.onClose}
         closeButtonClass={props.closeButtonClass}
         type="form"
-        modalsOpened={props.modalsOpened}
+        isOpen={props.isOpen}
       >
       <div className="modal_type_form__title">{props.title}</div>
 
