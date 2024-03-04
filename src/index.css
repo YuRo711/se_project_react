@@ -9,6 +9,9 @@
 @import url("./components/ModalWithForm/ModalWithForm.css");
 @import url("./components/ItemModal/ItemModal.css");
 @import url("./components/Profile/Profile.css");
+@import url("./components/ToggleSwitch/ToggleSwitch.css");
+@import url("./components/ClothesSection/ClothesSection.css");
+@import url("./components/SideBar/SideBar.css");
 
 body {
   margin: 0;

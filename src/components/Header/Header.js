@@ -1,7 +1,7 @@
 import logo from "../../images/Logo.svg";
 import avatar from "../../images/avatar.svg";
 import "./Header.css";
-import CheckSwitch from "../CheckSwitch/CheckSwitch";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 function Header(props) {
@@ -16,7 +16,7 @@ function Header(props) {
         <div className="header__date-place">
             {props.currentDate}, {props.locationName}
         </div>
-        <CheckSwitch
+        <ToggleSwitch
             icon-left="F"
             icon-right="C"
         />
