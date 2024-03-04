@@ -1,4 +1,5 @@
 import avatar from "../../images/avatar.svg";
+import "./SideBar.css";
 
 function SideBar(props) {
   return (
