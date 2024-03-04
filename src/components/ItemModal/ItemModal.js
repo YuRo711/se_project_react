@@ -5,7 +5,6 @@ function ItemModal(props) {
     const image = props.data.link;
     const name = props.data.name;
     const weather = props.data.weather;
-    const closeButtonClass = props.data.closeButtonClass;
 
     return (
       <Modal 
@@ -13,14 +12,21 @@ function ItemModal(props) {
         onClose={props.closeHandler}
         closeButtonClass={props.closeButtonClass}
         type="item"
-        modalsOpened={props.modalsOpened}
+        isOpen={props.isOpen}
       >
         <img className="modal_type_item__image"
           src={image}
           alt={name}
         />
-        <p className="modal_type_item__name">{name}</p>
-        <p className="modal_type_item__weather">Weather: {weather}</p>
+        <div className="modal_type_item__text">
+          <div className="modal_type_item__left-column">
+            <p className="modal_type_item__name">{name}</p>
+            <p className="modal_type_item__weather">Weather: {weather}</p>
+          </div>
+            <button className="modal_type_item__delete" onClick={props.handleCardDelete}>
+              Delete item
+            </button>
+        </div>
       </Modal>
     );
   }

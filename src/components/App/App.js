@@ -8,7 +8,7 @@ import Profile from "../Profile/Profile.js";
 import Footer from "../Footer/Footer.js";
 import ItemModal from "../ItemModal/ItemModal.js";
 import WeatherApi from "../../utils/weatherApi.js";
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./App.css";
 import AddItemModal from "../AddItemModal/AddItemModal.js";
 import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUnitContext.js";
@@ -19,10 +19,15 @@ function App() {
   const currentDate = 
     new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
   const api = new WeatherApi();
-  const [weather, updateWeather] = React.useState(null);
-  const [clothes, updateClothes] = React.useState(defaultClothingItems);
-  const [itemModalInfo, setItemModalInfo] = React.useState({});
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
+  const [weather, updateWeather] = useState(null);
+  const [clothes, updateClothes] = useState(defaultClothingItems);
+  const [itemModalInfo, setItemModalInfo] = useState({});
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
+  const [modalsActivity, setModalsActivity] = useState({
+    "item": false,
+    "add": false,
+    "delete": false,
+  });
 
   React.useEffect(() => {
     api.getWeather()
@@ -49,6 +54,8 @@ function App() {
             <Route path="/profile">
               <Profile
                 cards={clothes}
+                openModalHandler={handleModalOpen}
+                setItemModalInfo={setItemModalInfo}
               />
             </Route>
             <Route path="/">
@@ -66,14 +73,15 @@ function App() {
             closeHandler={handleModalClose}
             modalId="item"
             closeButtonClass="modal__close-button_white"
-            isOpen={false}
+            isOpen={modalsActivity["item"]}
+            handleCardDelete={handleCardDelete}
           />
           <AddItemModal 
             addItem={addItem}
             closeHandler={handleModalClose}
             modalId="add"
             closeButtonClass="modal__close-button_gray"
-            isOpen={false}
+            isOpen={modalsActivity["add"]}
           />
         </CurrentTemperatureUnitContext.Provider>
       </div>
@@ -97,12 +105,16 @@ function App() {
     updateClothes([item, ...clothes]);
   }
 
+  function handleCardDelete() {
+    handleModalClose("item");
+  }
+
   function handleModalClose(modalId) {
-    setModalsActivity({...modalsOpened, [modalId]: false});
+    setModalsActivity({...modalsActivity, [modalId]: false});
   }
 
   function handleModalOpen(modalId) {
-    setModalsActivity({...modalsOpened, [modalId]: true});
+    setModalsActivity({...modalsActivity, [modalId]: true});
   }
 }
 

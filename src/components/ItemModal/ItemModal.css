@@ -11,6 +11,12 @@
     width: 100%;
 }
 
+.modal_type_item__text {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 .modal_type_item__name {
     margin: 20px 0 0 32px;
     font-family: 'Cabinet Grotesk';
@@ -25,4 +31,17 @@
     font-size: 20px;
     font-weight: 700;
     line-height: 24px; 
+}
+
+.modal_type_item__delete {
+    margin: 20px 32px 0 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Cabinet Grotesk';
+    font-size: 20px;
+    font-weight: 700;
+    color: #FF4D00;
 }
