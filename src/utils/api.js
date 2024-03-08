@@ -17,8 +17,7 @@ export default class Api
         } else {
           return Promise.reject("something went wrong");
         }
-    })
-      .catch((err) => {console.log(err);});
+    });
   }
 
   async getItems() {
@@ -33,3 +32,5 @@ export default class Api
       return this._request("/items/" + itemId, "DELETE");
   }
 }
+
+export const api = new Api();

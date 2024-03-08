@@ -81,3 +81,5 @@ export default class WeatherApi
       currentTime < sunset * 1000;
   }
 }
+
+export const weatherApi = new WeatherApi();

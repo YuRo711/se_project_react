@@ -2,6 +2,17 @@ import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function AddItemModal(props) {
+  function submitHandler() {
+    props.addItem(name, image, weather)
+      .then(() => {
+        props.closeHandler(props.modalId);
+        setName("");
+        setImage("");
+        setWeather("");
+      })
+      .catch((err) => {console.log(err);});;
+  }
+
   const [name, setName] = useState('');
   const [image, setImage] = useState('');
   const [weather, setWeather] = useState('');
@@ -78,17 +89,6 @@ function AddItemModal(props) {
       </div>
     </ModalWithForm>
   );
-
-  function submitHandler() {
-    props.addItem(name, image, weather)
-      .then(() => {
-        props.closeHandler(props.modalId);
-        setName("");
-        setImage("");
-        setWeather("");
-        document.forms[0].reset();
-      });
-  }
 }
 
 export default AddItemModal;

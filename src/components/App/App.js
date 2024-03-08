@@ -11,15 +11,49 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUnitContext.js";
 import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min.js";
-import WeatherApi from "../../utils/weatherApi.js";
-import Api from "../../utils/api.js";
+import {weatherApi} from "../../utils/weatherApi.js";
+import {api} from "../../utils/api.js"
 
 
 function App() {
+  function handleToggleSwitchChange() {
+    currentTemperatureUnit === 'F'
+      ? setCurrentTemperatureUnit('C')
+      : setCurrentTemperatureUnit('F');
+  };
+
+  async function addItem(name, link, weather) {
+    const newItem = {
+      name: name,
+      imageUrl: link,
+      weather: weather,
+    };
+    return api.addItem(newItem)
+      .then((newItem) => {
+        updateClothes([newItem, ...clothes]);
+      });
+  }
+
+  function handleCardDelete(id) {
+    api.deleteItem(id)
+      .then(() => {
+        updateClothes(clothes.filter(item => item._id != id));
+        handleModalClose("item");
+      })
+      .catch((err) => {console.log(err);});;
+  }
+
+  function handleModalClose(modalId) {
+    setModalsActivity({...modalsActivity, [modalId]: false});
+  }
+
+  function handleModalOpen(modalId) {
+    setModalsActivity({...modalsActivity, [modalId]: true});
+  }
+
+
   const currentDate = 
     new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
-  const weatherApi = new WeatherApi();
-  const api = new Api();
   const [weather, updateWeather] = useState(null);
   const [clothes, updateClothes] = useState(null);
   const [itemModalInfo, setItemModalInfo] = useState({});
@@ -93,40 +127,6 @@ function App() {
         </CurrentTemperatureUnitContext.Provider>
       </div>
     );
-  }
-
-  function handleToggleSwitchChange() {
-    currentTemperatureUnit === 'F'
-      ? setCurrentTemperatureUnit('C')
-      : setCurrentTemperatureUnit('F');
-  };
-
-  async function addItem(name, link, weather) {
-    const newItem = {
-      name: name,
-      imageUrl: link,
-      weather: weather,
-    };
-    return api.addItem(newItem)
-      .then((newItem) => {
-        updateClothes([newItem, ...clothes]);
-    });
-  }
-
-  function handleCardDelete(id) {
-    api.deleteItem(id)
-      .then(() => {
-        updateClothes(clothes.filter(item => item._id != id));
-        handleModalClose("item");
-      });
-  }
-
-  function handleModalClose(modalId) {
-    setModalsActivity({...modalsActivity, [modalId]: false});
-  }
-
-  function handleModalOpen(modalId) {
-    setModalsActivity({...modalsActivity, [modalId]: true});
   }
 }
 
