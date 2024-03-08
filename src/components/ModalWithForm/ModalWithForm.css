@@ -21,7 +21,7 @@ input[type="radio"] {
     font-size: 16px;
     font-weight: 700;
     line-height: 20px;
-    margin-bottom: 24px;
+    margin: 0 0 24px;
 }
 
 .modal_type_form__label {

@@ -2,6 +2,7 @@ export default class Api
 {
   constructor() {
     this._baseUrl = 'http://localhost:3001';
+    this._headers = new Headers({"content-type": "application/json"});
   }
 
   async _request(url, method, requestBody) {
@@ -16,7 +17,8 @@ export default class Api
         } else {
           return Promise.reject("something went wrong");
         }
-    });
+    })
+      .catch((err) => {console.log(err);});
   }
 
   async getItems() {

@@ -101,22 +101,24 @@ function App() {
       : setCurrentTemperatureUnit('F');
   };
 
-  function addItem(name, link, weather) {
-    const len = clothes.length;
+  async function addItem(name, link, weather) {
     const newItem = {
-      _id: len,
       name: name,
       imageUrl: link,
       weather: weather,
     };
-    updateClothes([newItem, ...clothes]);
-    api.addItem(newItem);
+    return api.addItem(newItem)
+      .then((newItem) => {
+        updateClothes([newItem, ...clothes]);
+    });
   }
 
   function handleCardDelete(id) {
-    handleModalClose("item");
-    updateClothes(clothes.filter(item => item._id != id));
-    api.deleteItem(id);
+    api.deleteItem(id)
+      .then(() => {
+        updateClothes(clothes.filter(item => item._id != id));
+        handleModalClose("item");
+      });
   }
 
   function handleModalClose(modalId) {

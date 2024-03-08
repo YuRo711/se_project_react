@@ -17,6 +17,7 @@
 }
 
 .ItemCard__name {
+    margin: 0;
     position: relative;
     top: 15px;
     z-index: 1;

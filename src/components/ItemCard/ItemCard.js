@@ -15,7 +15,7 @@ function ItemCard(props) {
             src={data.imageUrl}
             alt={data.name}
         ></img>
-        <div className="ItemCard__name">{data.name}</div>
+        <p className="ItemCard__name">{data.name}</p>
       </div>
     );
   }

@@ -10,14 +10,14 @@ function ModalWithForm(props) {
         type="form"
         isOpen={props.isOpen}
       >
-      <div className="modal_type_form__title">{props.title}</div>
+      <p className="modal_type_form__title">{props.title}</p>
 
       <form className="modal_type_form__form"
         onSubmit={(event) => {
           event.preventDefault();
-          props.onClose(props.name);
           props.onSubmit();
         }}
+        id={`${props.name}-form`}
       >
 
         {props.children}
