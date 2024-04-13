@@ -9,11 +9,16 @@ input[type="radio"] {
 .modal_type_form__container {
     position: relative;
     width: 496px;
-    height: 436px;
+    height: fit-content;
     border-radius: 20px;
     background-color: #FFF;
     box-sizing: border-box;
-    padding: 28px 0 0 28px
+    padding: 28px 28px;
+}
+
+.modal_type_form__form {
+    display: flex;
+    flex-direction: column;
 }
 
 .modal_type_form__title {
@@ -45,7 +50,7 @@ input[type="radio"] {
     width: 440px;
     border: none;
     border-bottom: #000 solid 1px;
-    padding: 6px 0;
+    padding: 0 0 6px;
     margin-bottom: 24px;
     font-family: 'Cabinet Grotesk';
     font-size: 16px;
@@ -110,8 +115,17 @@ input[type="radio"] {
     opacity: 0.5;
 }
 
-.modal_type_form__submit-button {
+.modal_type_form__buttons {
+    display: block;
     margin-top: 32px;
+}
+
+.modal_type_form__buttons_no-margin {
+    margin-top: 0;
+}
+
+.modal_type_form__submit-button {
+    width: fit-content;
     background-color: #000;
     color: #FFF;
     border: none;
@@ -131,4 +145,21 @@ input[type="radio"] {
 
 .modal_type_form__submit-button:disabled {
     opacity: 0.3;
+}
+
+.modal_type_form__alt-button {
+    border: none;
+    background: none;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Cabinet Grotesk';
+    font-size: 16px;
+    font-weight: 700;
+    opacity: 0.5;
+    margin-left: 12px;
+}
+
+.modal_type_form__alt-button:hover {
+    opacity: 0.6;
 }

@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+import { Route, Navigate, Switch } from "react-router-dom/cjs/react-router-dom.min.js";
 import {
   locationName,
 } from "../../utils/constants.js";
@@ -7,15 +9,17 @@ import Profile from "../Profile/Profile.js";
 import Footer from "../Footer/Footer.js";
 import ItemModal from "../ItemModal/ItemModal.js";
 import AddItemModal from "../AddItemModal/AddItemModal.js";
-import React, { useState, useEffect } from "react";
 import "./App.css";
 import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUnitContext.js";
-import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min.js";
 import {weatherApi} from "../../utils/weatherApi.js";
 import {api} from "../../utils/api.js"
+import RegisterModal from "../RegisterModal/RegisterModal.js";
+import LoginModal from "../LoginModal/LoginModal.js";
 
 
 function App() {
+  //#region Methods
+
   function handleToggleSwitchChange() {
     currentTemperatureUnit === 'F'
       ? setCurrentTemperatureUnit('C')
@@ -51,6 +55,22 @@ function App() {
     setModalsActivity({...modalsActivity, [modalId]: true});
   }
 
+  function openAnotherModal(modalId, newModalId) {
+    setModalsActivity({...modalsActivity, 
+      [modalId]: false, [newModalId]: true});
+  }
+
+  async function registerUser(name, avatar, email, password) {
+    return api.addUser({ name, avatar, email, password });
+  }
+
+  async function signIn(email, password) {
+    return api.signIn({ email, password });
+  }
+
+  //#endregion
+
+  //#region Variables setup
 
   const currentDate = 
     new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
@@ -62,12 +82,15 @@ function App() {
     "item": false,
     "add": false,
     "delete": false,
+    "signup": false,
+    "login": true,
   });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     api.getItems()
       .then((items) => {
-        updateClothes(items);
+        updateClothes(items.data);
       })
       .catch((err) => { console.log(err); });
       
@@ -78,7 +101,11 @@ function App() {
       .catch((err) => { console.log(err); });
   }, []);
 
-  if (!weather || !clothes) {
+  //#endregion
+
+  //#region Rendering
+
+  if (!weather || !clothes && isLoggedIn) {
     return <div className="page">Loading...</div>
   } else {
     return (
@@ -121,13 +148,28 @@ function App() {
             addItem={addItem}
             closeHandler={handleModalClose}
             modalId="add"
-            closeButtonClass="modal__close-button_gray"
             isOpen={modalsActivity["add"]}
+          />
+          <RegisterModal
+            openAnotherModal={openAnotherModal}
+            altModalId="login"
+            closeHandler={handleModalClose}
+            modalId="signup"
+            isOpen={modalsActivity["signup"]}
+          />
+          <LoginModal
+            openAnotherModal={openAnotherModal}
+            altModalId="signup"
+            closeHandler={handleModalClose}
+            modalId="login"
+            isOpen={modalsActivity["login"]}
           />
         </CurrentTemperatureUnitContext.Provider>
       </div>
     );
   }
+  
+  //#endregion
 }
 
 export default App;

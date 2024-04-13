@@ -29,7 +29,15 @@ export default class Api
   }
 
   async deleteItem(itemId) {
-      return this._request("/items/" + itemId, "DELETE");
+    return this._request("/items/" + itemId, "DELETE");
+  }
+
+  async addUser(userData) {
+    return this._request("/signup", "POST");
+  }
+
+  async signIn(signInData) {
+    return this._request("/signin", "POST", signInData);
   }
 }
 
