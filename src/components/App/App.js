@@ -83,7 +83,7 @@ function App() {
     "add": false,
     "delete": false,
     "signup": false,
-    "login": true,
+    "login": false,
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -117,6 +117,7 @@ function App() {
             locationName={locationName}
             currentDate={currentDate}
             openModalHandler={handleModalOpen}
+            isLoggedIn={isLoggedIn}
           />
           <Switch>
             <Route path="/profile">

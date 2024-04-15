@@ -16,7 +16,7 @@
     margin-left: 16px;
 }
 
-.header__add-button {
+.header__button {
     border: none;
     background: none;
     box-shadow: none;
@@ -26,6 +26,11 @@
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
+    margin-right: 20px;
+}
+
+.header__button:last-child {
+    margin-right: 0;
 }
 
 .header__user {
