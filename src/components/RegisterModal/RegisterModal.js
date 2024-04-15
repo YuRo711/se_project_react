@@ -3,7 +3,15 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function RegisterModal(props) {
   function submitHandler() {
-
+    props.signupHandler(name, avatar, email, password)
+      .then(() => {
+        props.closeHandler(props.modalId);
+        setEmail("");
+        setPassword("");
+        setName("");
+        setAvatar("");
+      })
+      .catch((err) => {console.log(err);});;
   }
 
   const [email, setEmail] = useState("");

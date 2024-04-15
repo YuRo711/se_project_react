@@ -15,6 +15,7 @@ import {weatherApi} from "../../utils/weatherApi.js";
 import {api} from "../../utils/api.js"
 import RegisterModal from "../RegisterModal/RegisterModal.js";
 import LoginModal from "../LoginModal/LoginModal.js";
+import { getToken, setToken } from "../../utils/token.js";
 
 
 function App() {
@@ -61,11 +62,17 @@ function App() {
   }
 
   async function registerUser(name, avatar, email, password) {
-    return api.addUser({ name, avatar, email, password });
+    return api.addUser({ name, avatar, email, password })
+      .then((res) => {
+        setToken(res.token);
+      });
   }
 
   async function signIn(email, password) {
-    return api.signIn({ email, password });
+    return api.signIn({ email, password })
+      .then((res) => {
+        setToken(res.token);
+      });
   }
 
   //#endregion
@@ -88,6 +95,11 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
+    const token = getToken();
+    if (token) {
+      setIsLoggedIn(true);
+    }
+
     api.getItems()
       .then((items) => {
         updateClothes(items.data);
@@ -159,6 +171,7 @@ function App() {
             openAnotherModal={openAnotherModal}
             altModalId="login"
             closeHandler={handleModalClose}
+            signupHandler={registerUser}
             modalId="signup"
             isOpen={modalsActivity["signup"]}
           />
@@ -166,6 +179,7 @@ function App() {
             openAnotherModal={openAnotherModal}
             altModalId="signup"
             closeHandler={handleModalClose}
+            loginHandler={signIn}
             modalId="login"
             isOpen={modalsActivity["login"]}
           />

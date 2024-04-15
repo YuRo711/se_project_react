@@ -3,7 +3,13 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function LoginModal(props) {
   function submitHandler() {
-
+    props.loginHandler(email, password)
+      .then(() => {
+        props.closeHandler(props.modalId);
+        setEmail("");
+        setPassword("");
+      })
+      .catch((err) => {console.log(err);});;
   }
 
   const [email, setEmail] = useState("");

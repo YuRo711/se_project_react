@@ -5,10 +5,10 @@ export default class Api
     this._headers = new Headers({"content-type": "application/json"});
   }
 
-  async _request(url, method, requestBody) {
+  async _request(url, method, requestBody, headers=this._headers) {
     return fetch(this._baseUrl + url, {
       method: method,
-      headers: this._headers,
+      headers: headers,
       body: JSON.stringify(requestBody)
     })
       .then((res) => {
@@ -33,11 +33,18 @@ export default class Api
   }
 
   async addUser(userData) {
-    return this._request("/signup", "POST");
+    return this._request("/signup", "POST", userData);
   }
 
   async signIn(signInData) {
     return this._request("/signin", "POST", signInData);
+  }
+
+  async auth(token) {
+    return this._request("/users/me", "GET", {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    });
   }
 }
 
