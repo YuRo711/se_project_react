@@ -15,7 +15,10 @@ function Main(props) {
         weather={props.weather}
       />
       <div className="main__text">
-        Today is {temperature} / You may want to wear:
+        { props.isLoggedIn ? 
+            `Today is ${temperature} / You may want to wear:` :
+            "Log in to see garment suggestions"
+        }
       </div>
       <div className="main__cards">
         {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Navigate, Switch } from "react-router-dom/cjs/react-router-dom.min.js";
+import { Route, Switch, Redirect } from "react-router-dom";
 import {
   locationName,
 } from "../../utils/constants.js";
@@ -133,7 +133,11 @@ function App() {
                 cards={clothes}
                 setItemModalInfo={setItemModalInfo}
                 openModalHandler={handleModalOpen}
+                isLoggedIn={isLoggedIn}
               />
+            </Route>
+            <Route path="*">
+              <Redirect to="/" replace/>
             </Route>
           </Switch>
           <Footer />
