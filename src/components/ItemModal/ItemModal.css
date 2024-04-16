@@ -45,3 +45,7 @@
     font-weight: 700;
     color: #FF4D00;
 }
+
+.modal_type_item__delete_hidden {
+    visibility: hidden;
+}

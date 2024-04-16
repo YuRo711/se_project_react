@@ -171,6 +171,7 @@ function App() {
             closeButtonClass="modal__close-button_white"
             isOpen={modalsActivity["item"]}
             handleCardDelete={handleCardDelete}
+            currentUser={currentUser}
           />
           <AddItemModal 
             addItem={addItem}

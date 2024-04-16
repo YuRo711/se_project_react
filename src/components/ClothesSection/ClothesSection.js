@@ -17,14 +17,16 @@ function ClothesSection(props) {
         </div>
         <div className="clothes__cards">
           {
-            props.cards.map((card, i) => (
-              <ItemCard
-                key={card._id}
-                data={card}
-                openModalHandler={props.openModalHandler}
-                setItemModalInfo={props.setItemModalInfo}
-              />
-            ))
+            props.cards
+              .filter((card) => card.owner === props.currentUser._id)
+              .map((card, i) => (
+                <ItemCard
+                  key={card._id}
+                  data={card}
+                  openModalHandler={props.openModalHandler}
+                  setItemModalInfo={props.setItemModalInfo}
+                />
+              ))
           }
         </div>
       </div>

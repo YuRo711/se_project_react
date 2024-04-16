@@ -12,6 +12,7 @@ function Profile(props) {
         openModalHandler={props.openModalHandler}
         setItemModalInfo={props.setItemModalInfo}
         cards={props.cards}
+        currentUser={props.currentUser}
       />
     </main>
   );
