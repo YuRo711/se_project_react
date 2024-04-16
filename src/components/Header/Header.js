@@ -22,7 +22,10 @@ function Header(props) {
             icon-right="C"
         />
         { props.isLoggedIn ?
-            <UserMenu openModalHandler={props.openModalHandler}/> :
+            <UserMenu
+                openModalHandler={props.openModalHandler}
+                currentUser={props.currentUser}
+            /> :
             <LoginMenu openModalHandler={props.openModalHandler}/>
         }
       </header>

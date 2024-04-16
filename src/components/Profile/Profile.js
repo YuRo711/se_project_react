@@ -5,7 +5,9 @@ import "./Profile.css";
 function Profile(props) {
   return (
     <main className="profile">
-      <SideBar />
+      <SideBar
+        currentUser={props.currentUser}
+      />
       <ClothesSection
         openModalHandler={props.openModalHandler}
         setItemModalInfo={props.setItemModalInfo}

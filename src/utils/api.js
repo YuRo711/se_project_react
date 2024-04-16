@@ -41,10 +41,11 @@ export default class Api
   }
 
   async auth(token) {
-    return this._request("/users/me", "GET", {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+    this._headers = new Headers({
+      "content-Type": "application/json",
+      "authorization": `Bearer ${token}`,
     });
+    return this._request("/users/me", "GET");
   }
 }
 

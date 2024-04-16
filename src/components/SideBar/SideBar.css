@@ -10,6 +10,18 @@
 .sidebar__user-avatar {
   width: 50px;
   height: 50px;
+  background-color: #0583F2;
+  border-radius: 50%;
+  border: solid 1px #00000080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #FFF;
+  font-family: "Cabinet Grotesk";
+  font-size: 25px;
+  font-weight: 700;
+  overflow: hidden;
 }
 
 .sidebar__user-name {

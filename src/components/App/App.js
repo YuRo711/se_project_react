@@ -65,6 +65,7 @@ function App() {
     return api.addUser({ name, avatar, email, password })
       .then((res) => {
         setToken(res.token);
+        setIsLoggedIn(true);
       });
   }
 
@@ -72,6 +73,7 @@ function App() {
     return api.signIn({ email, password })
       .then((res) => {
         setToken(res.token);
+        setIsLoggedIn(true);
       });
   }
 
@@ -93,11 +95,17 @@ function App() {
     "login": false,
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
     const token = getToken();
     if (token) {
       setIsLoggedIn(true);
+      api.auth(token)
+        .then((res) => {
+          setCurrentUser(res.data);
+        })
+        .catch((err) => { console.log(err) });
     }
 
     api.getItems()
@@ -130,6 +138,7 @@ function App() {
             currentDate={currentDate}
             openModalHandler={handleModalOpen}
             isLoggedIn={isLoggedIn}
+            currentUser={currentUser}
           />
           <Switch>
             <Route path="/profile">
@@ -137,6 +146,7 @@ function App() {
                 cards={clothes}
                 openModalHandler={handleModalOpen}
                 setItemModalInfo={setItemModalInfo}
+                currentUser={currentUser}
               />
             </Route>
             <Route path="/">
@@ -146,6 +156,7 @@ function App() {
                 setItemModalInfo={setItemModalInfo}
                 openModalHandler={handleModalOpen}
                 isLoggedIn={isLoggedIn}
+                currentUser={currentUser}
               />
             </Route>
             <Route path="*">

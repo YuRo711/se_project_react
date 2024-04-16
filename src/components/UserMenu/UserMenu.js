@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
-import avatar from "../../images/avatar.svg";
 
 function UserMenu(props) {
 	return (
@@ -15,10 +14,12 @@ function UserMenu(props) {
 			
 			<NavLink className="header__link" to="/profile">
 				<div className="header__user">
-					<p className="header__user-name">Terrence Tegegne</p>
+					<p className="header__user-name">
+						{props.currentUser.name}
+					</p>
 					<img className="header__user-avatar"
-						src={avatar}
-						alt="user avatar"
+						src={props.currentUser.avatar}
+						alt={props.currentUser.name[0]}
 					></img>
 				</div>
 			</NavLink>

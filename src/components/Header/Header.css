@@ -50,4 +50,15 @@
 
 .header__user-avatar {
     margin-left: 12px;
+    width: 40px;
+    height: 40px;
+    background-color: #0583F2;
+    border-radius: 50%;
+    border: solid 1px #00000080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #FFF;
+    overflow: hidden;
 }

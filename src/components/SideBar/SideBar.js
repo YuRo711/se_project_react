@@ -6,10 +6,12 @@ function SideBar(props) {
     <div className="sidebar">
       <div className="sidebar__user">
           <img className="sidebar__user-avatar"
-            src={avatar}
-            alt="user avatar"
+            src={props.currentUser.avatar}
+            alt={props.currentUser.name[0]}
           ></img>
-          <p className="sidebar__user-name">Terrence Tegegne</p>
+          <p className="sidebar__user-name">
+            {props.currentUser.name}
+          </p>
       </div>
     </div>
   );
