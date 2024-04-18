@@ -4,6 +4,14 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function EditUserModal(props) {
   function submitHandler() {
+		props.updateHandler({ name, avatar })
+			.then(() => {
+				props.setCurrentUser(
+					{...currentUser, name: name, avatar: avatar}
+				);
+        props.closeHandler(props.modalId);
+			})
+      .catch((err) => {console.log(err);});
   }
 
 	const currentUser = useContext(CurrentUserContext);

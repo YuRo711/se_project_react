@@ -9,7 +9,7 @@ function LoginModal(props) {
         setEmail("");
         setPassword("");
       })
-      .catch((err) => {console.log(err);});;
+      .catch((err) => {console.log(err);});
   }
 
   const [email, setEmail] = useState("");

@@ -36,6 +36,10 @@ export default class Api
     return this._request("/signup", "POST", userData);
   }
 
+  async updateUser(userData) {
+    return this._request("/users/me", "PATCH", userData);
+  }
+
   async signIn(signInData) {
     return this._request("/signin", "POST", signInData);
   }

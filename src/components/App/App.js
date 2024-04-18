@@ -50,6 +50,10 @@ function App() {
       .catch((err) => {console.log(err);});;
   }
 
+  async function handleUpdateUser(data) {
+    return api.updateUser(data);
+  }
+
   function handleModalClose(modalId) {
     setModalsActivity({...modalsActivity, [modalId]: false});
   }
@@ -199,7 +203,8 @@ function App() {
             closeHandler={handleModalClose}
             modalId="edit-user"
             isOpen={modalsActivity["edit-user"]}
-
+            updateHandler={handleUpdateUser}
+            setCurrentUser={setCurrentUser}
           />
         </CurrentUserContext.Provider>
         </CurrentTemperatureUnitContext.Provider>
