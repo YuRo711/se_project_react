@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function ClothesSection(props) {
+  const currentUser = useContext(CurrentUserContext);
+
   return (
     <div className="clothes">
         <div className="clothes-header">
@@ -18,7 +22,7 @@ function ClothesSection(props) {
         <div className="clothes__cards">
           {
             props.cards
-              .filter((card) => card.owner === props.currentUser._id)
+              .filter((card) => card.owner === currentUser._id)
               .map((card, i) => (
                 <ItemCard
                   key={card._id}

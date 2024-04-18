@@ -5,6 +5,7 @@
 .sidebar__user {
   display: flex;
   align-items: center;
+  margin-bottom: 24px;
 }
 
 .sidebar__user-avatar {
@@ -29,4 +30,18 @@
   font-family: "Cabinet Grotesk";
   font-size: 20px;
   font-weight: 700;
+}
+
+.sidebar__button {
+  display: block;
+  border: none;
+  background: none;
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+  font-family: 'Cabinet Grotesk';
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 8px;
 }

@@ -11,11 +11,13 @@ import ItemModal from "../ItemModal/ItemModal.js";
 import AddItemModal from "../AddItemModal/AddItemModal.js";
 import "./App.css";
 import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUnitContext.js";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import {weatherApi} from "../../utils/weatherApi.js";
 import {api} from "../../utils/api.js"
 import RegisterModal from "../RegisterModal/RegisterModal.js";
 import LoginModal from "../LoginModal/LoginModal.js";
 import { getToken, setToken } from "../../utils/token.js";
+import EditUserModal from "../EditUserModal/EditUserModal.js";
 
 
 function App() {
@@ -93,6 +95,7 @@ function App() {
     "delete": false,
     "signup": false,
     "login": false,
+    "edit-user": false,
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
@@ -133,6 +136,7 @@ function App() {
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
+        <CurrentUserContext.Provider value={currentUser}>
           <Header 
             locationName={locationName}
             currentDate={currentDate}
@@ -195,6 +199,13 @@ function App() {
             modalId="login"
             isOpen={modalsActivity["login"]}
           />
+          <EditUserModal
+            closeHandler={handleModalClose}
+            modalId="edit-user"
+            isOpen={modalsActivity["edit-user"]}
+
+          />
+        </CurrentUserContext.Provider>
         </CurrentTemperatureUnitContext.Provider>
       </div>
     );

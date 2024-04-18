@@ -29,7 +29,7 @@ function LoginModal(props) {
       altModalId={props.altModalId}
       buttonNoMargin={true}
     >
-      <label className="modal_type_form__label" htmlFor="name-input">Email</label>
+      <label className="modal_type_form__label" htmlFor="email-input">Email</label>
       <input type="text"
         className="modal_type_form__input"
         placeholder="Email"
@@ -39,7 +39,7 @@ function LoginModal(props) {
         required
       />
 
-      <label className="modal_type_form__label" htmlFor="name-input">Password</label>
+      <label className="modal_type_form__label" htmlFor="password-input">Password</label>
       <input type="password"
         className="modal_type_form__input"
         placeholder="Password"
