@@ -24,7 +24,6 @@ function Header(props) {
         { props.isLoggedIn ?
             <UserMenu
                 openModalHandler={props.openModalHandler}
-                currentUser={props.currentUser}
             /> :
             <LoginMenu openModalHandler={props.openModalHandler}/>
         }

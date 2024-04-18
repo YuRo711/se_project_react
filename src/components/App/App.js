@@ -142,7 +142,6 @@ function App() {
             currentDate={currentDate}
             openModalHandler={handleModalOpen}
             isLoggedIn={isLoggedIn}
-            currentUser={currentUser}
           />
           <Switch>
             <Route path="/profile">
@@ -150,7 +149,6 @@ function App() {
                 cards={clothes}
                 openModalHandler={handleModalOpen}
                 setItemModalInfo={setItemModalInfo}
-                currentUser={currentUser}
               />
             </Route>
             <Route path="/">
@@ -160,7 +158,6 @@ function App() {
                 setItemModalInfo={setItemModalInfo}
                 openModalHandler={handleModalOpen}
                 isLoggedIn={isLoggedIn}
-                currentUser={currentUser}
               />
             </Route>
             <Route path="*">
@@ -175,7 +172,6 @@ function App() {
             closeButtonClass="modal__close-button_white"
             isOpen={modalsActivity["item"]}
             handleCardDelete={handleCardDelete}
-            currentUser={currentUser}
           />
           <AddItemModal 
             addItem={addItem}
