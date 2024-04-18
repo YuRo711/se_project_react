@@ -41,9 +41,9 @@
 }
 
 .modal__close-button_white {
-    background-image: url("../../images/close\ button\ white.svg");
+    background-image: url("../../../images/close\ button\ white.svg");
 }
 
 .modal__close-button_gray {
-    background-image: url("../../images/close\ button\ gray.svg");
+    background-image: url("../../../images/close\ button\ gray.svg");
 }

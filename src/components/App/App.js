@@ -7,17 +7,17 @@ import Header from "../Header/Header.js";
 import Main from "../Main/Main.js";
 import Profile from "../Profile/Profile.js";
 import Footer from "../Footer/Footer.js";
-import ItemModal from "../ItemModal/ItemModal.js";
-import AddItemModal from "../AddItemModal/AddItemModal.js";
+import ItemModal from "../Modals/ItemModal/ItemModal.js";
+import AddItemModal from "../Modals/AddItemModal/AddItemModal.js";
 import "./App.css";
 import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUnitContext.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import {weatherApi} from "../../utils/weatherApi.js";
 import {api} from "../../utils/api.js"
-import RegisterModal from "../RegisterModal/RegisterModal.js";
-import LoginModal from "../LoginModal/LoginModal.js";
+import RegisterModal from "../Modals/RegisterModal/RegisterModal.js";
+import LoginModal from "../Modals/LoginModal/LoginModal.js";
 import { getToken, setToken } from "../../utils/token.js";
-import EditUserModal from "../EditUserModal/EditUserModal.js";
+import EditUserModal from "../Modals/EditUserModal/EditUserModal.js";
 
 
 function App() {

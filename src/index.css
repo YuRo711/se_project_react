@@ -5,9 +5,9 @@
 @import url("./components/WeatherCard/WeatherCard.css");
 @import url("./components/ItemCard/ItemCard.css");
 @import url("./components/Footer/Footer.css");
-@import url("./components/Modal/Modal.css");
-@import url("./components/ModalWithForm/ModalWithForm.css");
-@import url("./components/ItemModal/ItemModal.css");
+@import url("./components/Modals/Modal/Modal.css");
+@import url("./components/Modals/ModalWithForm/ModalWithForm.css");
+@import url("./components/Modals/ItemModal/ItemModal.css");
 @import url("./components/Profile/Profile.css");
 @import url("./components/ToggleSwitch/ToggleSwitch.css");
 @import url("./components/ClothesSection/ClothesSection.css");
