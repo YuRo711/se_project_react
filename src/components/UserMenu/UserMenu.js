@@ -4,7 +4,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function UserMenu(props) {
 	const currentUser = useContext(CurrentUserContext);
-
+	
 	return (
 		<div className="header__user-menu">
 			<button 

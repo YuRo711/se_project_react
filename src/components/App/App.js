@@ -72,6 +72,7 @@ function App() {
       .then((res) => {
         setToken(res.token);
         setIsLoggedIn(true);
+        window.location.reload();
       });
   }
 
@@ -80,6 +81,7 @@ function App() {
       .then((res) => {
         setToken(res.token);
         setIsLoggedIn(true);
+        window.location.reload();
       });
   }
 
@@ -135,10 +137,10 @@ function App() {
   useEffect(() => {
     const token = getToken();
     if (token) {
-      setIsLoggedIn(true);
       api.auth(token)
         .then((res) => {
           setCurrentUser(res.data);
+          setIsLoggedIn(true);
         })
         .catch((err) => { console.log(err) });
     }
@@ -160,7 +162,7 @@ function App() {
 
   //#region Rendering
 
-  if (!weather || !clothes && isLoggedIn) {
+  if (!weather || !currentUser && isLoggedIn) {
     return <div className="page">Loading...</div>
   } else {
     return (
