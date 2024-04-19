@@ -83,6 +83,29 @@ function App() {
       });
   }
 
+  function handleCardLike(id, isLiked) {
+    const userId = currentUser._id;
+    !isLiked
+      ?
+        api
+          .addCardLike(id)
+          .then((updatedCard) => {
+            updateClothes((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      :
+        api
+          .removeCardLike(id) 
+          .then((updatedCard) => {
+            updateClothes((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
+
   //#endregion
 
   //#region Variables setup
@@ -162,6 +185,7 @@ function App() {
                 setItemModalInfo={setItemModalInfo}
                 openModalHandler={handleModalOpen}
                 isLoggedIn={isLoggedIn}
+                onCardLike={handleCardLike}
               />
             </Route>
             <Route path="*">

@@ -10,7 +10,7 @@ function ItemModal(props) {
   const weather = props.data.weather;
   const isOwn = props.data.owner === currentUser._id;
   const deleteButtonClassName = (
-    `item__delete-button${isOwn ? '' : ' modal_type_item__delete_hidden'}`
+    `modal_type_item__delete${isOwn ? '' : ' modal_type_item__delete_hidden'}`
   );
 
   return (

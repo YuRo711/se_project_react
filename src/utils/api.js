@@ -51,6 +51,14 @@ export default class Api
     });
     return this._request("/users/me", "GET");
   }
+
+  addCardLike(id) {
+    return this._request(`/items/${id}/likes`, "PUT");
+  }
+
+  removeCardLike(id) {
+    return this._request(`/items/${id}/likes`, "DELETE");
+  }
 }
 
 export const api = new Api();
