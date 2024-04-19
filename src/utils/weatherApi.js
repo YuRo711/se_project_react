@@ -6,10 +6,6 @@ import {
 
 export default class WeatherApi
 {
-  constructor()
-  {
-  }
-
   async getWeather()
   {
     return this._getWeatherJson()
@@ -62,9 +58,9 @@ export default class WeatherApi
   _getWeatherType(id) {
     if (id > 800) {
       return 'clouds';
-    } else if (id == 800) {
+    } else if (id === 800) {
       return 'clear';
-    } else if (id == 741) {
+    } else if (id === 741) {
       return 'fog';
     } else if (id > 600) {
       return 'snow';

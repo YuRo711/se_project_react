@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import "./Modal.css";
 
-export const Modal = ({ name, onClose, closeButtonClass, type, isOpen, children }) => {
+export function Modal(props) {
+  const { onClose, name } = props;
+
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") {
@@ -12,7 +14,7 @@ export const Modal = ({ name, onClose, closeButtonClass, type, isOpen, children 
     document.addEventListener("keydown", handleEscape);
 
     return () => document.removeEventListener("keydown", handleEscape);
-  }, [onClose]);
+  }, [onClose, name]);
 
   const handleOverlay = (e) => {
     if (e.target === e.currentTarget) {
@@ -21,18 +23,18 @@ export const Modal = ({ name, onClose, closeButtonClass, type, isOpen, children 
   };
 
   return (
-    <div className={isOpen ? 
-          `modal modal_type_${type} modal_opened` : 
-          `modal modal_type_${type}`}
-        id={name}
+    <div className={props.isOpen ? 
+          `modal modal_type_${props.type} modal_opened` : 
+          `modal modal_type_${props.type}`}
+        id={props.name}
         onClick={handleOverlay}
     >
-      <div className={`modal__container modal_type_${type}__container`}>
-        {children}
-        <button className={`modal__close-button ${closeButtonClass}`}
+      <div className={`modal__container modal_type_${props.type}__container`}>
+        {props.children}
+        <button className={`modal__close-button ${props.closeButtonClass}`}
             type="button"
             onClick={() => {
-                onClose(name);
+              onClose(name);
             }}
         />
       </div>

@@ -19,7 +19,7 @@ function WeatherCard(props) {
       <div className="weatherCard">
         <img className="weatherCard__card"
             src={weatherImage}
-            alt="weather card image"
+            alt="weather card"
         ></img>
         <div className="weatherCard__temperature">{temperature}</div>
       </div>

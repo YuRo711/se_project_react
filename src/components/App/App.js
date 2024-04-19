@@ -44,7 +44,7 @@ function App() {
   function handleCardDelete(id) {
     api.deleteItem(id)
       .then(() => {
-        updateClothes(clothes.filter(item => item._id != id));
+        updateClothes(clothes.filter(item => item._id !== id));
         handleModalClose("item");
       })
       .catch((err) => {console.log(err);});;
@@ -162,7 +162,7 @@ function App() {
 
   //#region Rendering
 
-  if (!weather || !currentUser && isLoggedIn) {
+  if (!weather || (!currentUser && isLoggedIn)) {
     return <div className="page">Loading...</div>
   } else {
     return (

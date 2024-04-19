@@ -23,7 +23,7 @@ function Main(props) {
       <div className="main__cards">
         {
           props.cards.filter(
-              (card) => card.weather == props.weather.tempType
+              (card) => card.weather === props.weather.tempType
             )
             .map((card, i) => (
               <ItemCard

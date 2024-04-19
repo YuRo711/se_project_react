@@ -12,8 +12,7 @@ function ItemCard(props) {
     
     return (
       <div className="item-card" 
-        onClick={(e) => {
-          if (e.target === e.currentTarget)
+        onClick={() => {
           props.openModalHandler("item");
           props.setItemModalInfo(data);
       }}>
@@ -26,7 +25,8 @@ function ItemCard(props) {
           <button className={props.isLoggedIn ?
             `item-card__like${isLiked ? " item-card__like_liked" : ""}` :
             "item-card__like_hidden" }
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               props.onCardLike(data._id, isLiked);
             }}/>
         </div>
