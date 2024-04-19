@@ -16,7 +16,7 @@ import {weatherApi} from "../../utils/weatherApi.js";
 import {api} from "../../utils/api.js"
 import RegisterModal from "../Modals/RegisterModal/RegisterModal.js";
 import LoginModal from "../Modals/LoginModal/LoginModal.js";
-import { getToken, setToken } from "../../utils/token.js";
+import { getToken, removeToken, setToken } from "../../utils/token.js";
 import EditUserModal from "../Modals/EditUserModal/EditUserModal.js";
 
 
@@ -81,6 +81,10 @@ function App() {
         setToken(res.token);
         setIsLoggedIn(true);
       });
+  }
+
+  function logOut() {
+    removeToken();
   }
 
   function handleCardLike(id, isLiked) {
@@ -172,11 +176,16 @@ function App() {
           />
           <Switch>
             <Route path="/profile">
-              <Profile
-                cards={clothes}
-                openModalHandler={handleModalOpen}
-                setItemModalInfo={setItemModalInfo}
-              />
+              {isLoggedIn ?
+                <Profile
+                  cards={clothes}
+                  openModalHandler={handleModalOpen}
+                  setItemModalInfo={setItemModalInfo}
+                  onCardLike={handleCardLike}
+                  logOutHandler={logOut}
+                /> :
+                <Redirect to="/" replace></Redirect>
+              }
             </Route>
             <Route path="/">
               <Main

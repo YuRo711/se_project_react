@@ -29,6 +29,7 @@ function ClothesSection(props) {
                   data={card}
                   openModalHandler={props.openModalHandler}
                   setItemModalInfo={props.setItemModalInfo}
+                  onCardLike={props.onCardLike}
                 />
               ))
           }
