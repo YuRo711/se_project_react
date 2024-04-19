@@ -88,11 +88,11 @@ function App() {
   }
 
   function handleCardLike(id, isLiked) {
-    const userId = currentUser._id;
     !isLiked
       ?
         api
           .addCardLike(id)
+          .then((res) => res.data)
           .then((updatedCard) => {
             updateClothes((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
@@ -102,6 +102,7 @@ function App() {
       :
         api
           .removeCardLike(id) 
+          .then((res) => res.data)
           .then((updatedCard) => {
             updateClothes((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))

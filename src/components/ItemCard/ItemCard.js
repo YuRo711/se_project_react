@@ -8,11 +8,12 @@ function ItemCard(props) {
     if (!data)
         return;
 
-    const isLiked = data.likes.includes(currentUser._id);
+    let isLiked = data.likes.includes(currentUser._id);
     
     return (
       <div className="item-card" 
-        onClick={() => {
+        onClick={(e) => {
+          if (e.target === e.currentTarget)
           props.openModalHandler("item");
           props.setItemModalInfo(data);
       }}>
@@ -22,8 +23,9 @@ function ItemCard(props) {
         ></img>
         <div className="item-card__header">
           <p className="item-card__name">{data.name}</p>
-          <button className={props.isLoggedIn ? "item-card__like_hidden" :
-            `item-card__like${isLiked ? " item-card__like_liked" : ""}`}
+          <button className={props.isLoggedIn ?
+            `item-card__like${isLiked ? " item-card__like_liked" : ""}` :
+            "item-card__like_hidden" }
             onClick={() => {
               props.onCardLike(data._id, isLiked);
             }}/>
