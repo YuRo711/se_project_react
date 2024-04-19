@@ -22,8 +22,8 @@ function ItemCard(props) {
         ></img>
         <div className="item-card__header">
           <p className="item-card__name">{data.name}</p>
-          <button className={`item-card__like
-            ${isLiked ? " item-card__like_liked" : ""}`}
+          <button className={props.isLoggedIn ? "item-card__like_hidden" :
+            `item-card__like${isLiked ? " item-card__like_liked" : ""}`}
             onClick={() => {
               props.onCardLike(data._id, isLiked);
             }}/>

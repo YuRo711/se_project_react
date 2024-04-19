@@ -54,3 +54,7 @@
 .item-card__like_liked {
     background-image: url("../../images/Like\ button\ active.svg");
 }
+
+.item-card__like_hidden {
+    visibility: hidden;
+}
