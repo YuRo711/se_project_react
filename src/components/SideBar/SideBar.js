@@ -28,7 +28,6 @@ function SideBar(props) {
       <button className="sidebar__button"
         onClick={() => {
           props.logOutHandler();
-          window.location.reload();
         }}>
         Log out
       </button>

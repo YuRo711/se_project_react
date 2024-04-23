@@ -72,7 +72,6 @@ function App() {
       .then((res) => {
         setToken(res.token);
         setIsLoggedIn(true);
-        window.location.reload();
       });
   }
 
@@ -81,12 +80,12 @@ function App() {
       .then((res) => {
         setToken(res.token);
         setIsLoggedIn(true);
-        window.location.reload();
       });
   }
 
   function logOut() {
     removeToken();
+    setIsLoggedIn(false);
   }
 
   function handleCardLike(id, isLiked) {
@@ -156,13 +155,13 @@ function App() {
         updateWeather(weatherData);
       })
       .catch((err) => { console.log(err); });
-  }, []);
+  }, [isLoggedIn]);
 
   //#endregion
 
   //#region Rendering
 
-  if (!weather || (!currentUser && isLoggedIn)) {
+  if (!weather || (!currentUser._id && isLoggedIn)) {
     return <div className="page">Loading...</div>
   } else {
     return (
