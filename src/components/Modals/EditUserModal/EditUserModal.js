@@ -29,21 +29,21 @@ function EditUserModal(props) {
       isOpen={props.isOpen}
       buttonNoMargin={true}
     >
-      <label className="modal_type_form__label" htmlFor="name-input">Name*</label>
+      <label className="modal_type_form__label" htmlFor="name-input-edit-user">Name*</label>
       <input type="text"
         className="modal_type_form__input"
         placeholder="Name"
-        id="name-input"
+        id="name-input-edit-user"
         value={name}
         onChange={(e) => {setName(e.target.value)}}
       />
 
 
-      <label className="modal_type_form__label" htmlFor="avatar-input">Avatar*</label>
+      <label className="modal_type_form__label" htmlFor="avatar-input-edit-user">Avatar*</label>
       <input type="text"
         className="modal_type_form__input"
         placeholder="Avatar URL"
-        id="avatar-input"
+        id="avatar-input-edit-user"
         value={avatar}
         onChange={(e) => {setAvatar(e.target.value)}}
       />

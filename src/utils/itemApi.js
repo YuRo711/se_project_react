@@ -1,4 +1,4 @@
-export default class Api
+export default class ItemApi
 {
   constructor() {
     this._baseUrl = 'http://localhost:3001';
@@ -32,26 +32,6 @@ export default class Api
     return this._request("/items/" + itemId, "DELETE");
   }
 
-  async addUser(userData) {
-    return this._request("/signup", "POST", userData);
-  }
-
-  async updateUser(userData) {
-    return this._request("/users/me", "PATCH", userData);
-  }
-
-  async signIn(signInData) {
-    return this._request("/signin", "POST", signInData);
-  }
-
-  async auth(token) {
-    this._headers = new Headers({
-      "content-Type": "application/json",
-      "authorization": `Bearer ${token}`,
-    });
-    return this._request("/users/me", "GET");
-  }
-
   addCardLike(id) {
     return this._request(`/items/${id}/likes`, "PUT");
   }
@@ -59,6 +39,13 @@ export default class Api
   removeCardLike(id) {
     return this._request(`/items/${id}/likes`, "DELETE");
   }
+
+  setTokenHeader(token) {
+    this._headers = new Headers({
+      "content-Type": "application/json",
+      "authorization": `Bearer ${token}`,
+    });
+  }
 }
 
-export const api = new Api();
+export const itemApi = new ItemApi();

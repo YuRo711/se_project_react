@@ -29,21 +29,21 @@ function LoginModal(props) {
       altModalId={props.altModalId}
       buttonNoMargin={true}
     >
-      <label className="modal_type_form__label" htmlFor="email-input">Email</label>
+      <label className="modal_type_form__label" htmlFor="email-input-login-login">Email</label>
       <input type="text"
         className="modal_type_form__input"
         placeholder="Email"
-        id="email-input"
+        id="email-input-login-login"
         value={email}
         onChange={(e) => {setEmail(e.target.value)}}
         required
       />
 
-      <label className="modal_type_form__label" htmlFor="password-input">Password</label>
+      <label className="modal_type_form__label" htmlFor="password-input-login-login">Password</label>
       <input type="password"
         className="modal_type_form__input"
         placeholder="Password"
-        id="password-input"
+        id="password-input-login-login"
         value={password}
         onChange={(e) => {setPassword(e.target.value)}}
         required

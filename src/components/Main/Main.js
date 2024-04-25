@@ -15,26 +15,25 @@ function Main(props) {
         weather={props.weather}
       />
       <div className="main__text">
-        { props.isLoggedIn ? 
-            `Today is ${temperature} / You may want to wear:` :
-            "Log in to see garment suggestions"
-        }
+        {`Today is ${temperature} / You may want to wear:`}
       </div>
       <div className="main__cards">
         {
-          props.cards.filter(
-              (card) => card.weather === props.weather.tempType
-            )
-            .map((card, i) => (
-              <ItemCard
-                key={card._id}
-                data={card}
-                openModalHandler={props.openModalHandler}
-                setItemModalInfo={props.setItemModalInfo}
-                onCardLike={props.onCardLike}
-                isLoggedIn={props.isLoggedIn}
-              />
-            ))
+          props.cards ?
+            props.cards.filter(
+                (card) => card.weather === props.weather.tempType
+              )
+              .map((card, i) => (
+                <ItemCard
+                  key={card._id}
+                  data={card}
+                  openModalHandler={props.openModalHandler}
+                  setItemModalInfo={props.setItemModalInfo}
+                  onCardLike={props.onCardLike}
+                  isLoggedIn={props.isLoggedIn}
+                />
+              )) :
+          ""
         }
         <ItemCard />
       </div>

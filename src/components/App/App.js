@@ -13,11 +13,13 @@ import "./App.css";
 import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUnitContext.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import {weatherApi} from "../../utils/weatherApi.js";
-import {api} from "../../utils/api.js"
+import { itemApi } from "../../utils/itemApi.js";
+import { userApi } from "../../utils/userApi.js";
 import RegisterModal from "../Modals/RegisterModal/RegisterModal.js";
 import LoginModal from "../Modals/LoginModal/LoginModal.js";
 import { getToken, removeToken, setToken } from "../../utils/token.js";
 import EditUserModal from "../Modals/EditUserModal/EditUserModal.js";
+import ProtectedRoute from "../../utils/protectedRoute.js";
 
 
 function App() {
@@ -35,14 +37,15 @@ function App() {
       imageUrl: link,
       weather: weather,
     };
-    return api.addItem(newItem)
+    return itemApi.addItem(newItem)
       .then((newItem) => {
-        updateClothes([newItem, ...clothes]);
-      });
+        updateClothes([newItem.data, ...clothes]);
+      })
+      .catch((err) => console.log(err));
   }
 
   function handleCardDelete(id) {
-    api.deleteItem(id)
+   itemApi.deleteItem(id)
       .then(() => {
         updateClothes(clothes.filter(item => item._id !== id));
         handleModalClose("item");
@@ -51,7 +54,7 @@ function App() {
   }
 
   async function handleUpdateUser(data) {
-    return api.updateUser(data);
+    return itemApi.updateUser(data);
   }
 
   function handleModalClose(modalId) {
@@ -68,7 +71,7 @@ function App() {
   }
 
   async function registerUser(name, avatar, email, password) {
-    return api.addUser({ name, avatar, email, password })
+    return userApi.addUser({ name, avatar, email, password })
       .then((res) => {
         setToken(res.token);
         setIsLoggedIn(true);
@@ -76,7 +79,7 @@ function App() {
   }
 
   async function signIn(email, password) {
-    return api.signIn({ email, password })
+    return userApi.signIn({ email, password })
       .then((res) => {
         setToken(res.token);
         setIsLoggedIn(true);
@@ -91,7 +94,7 @@ function App() {
   function handleCardLike(id, isLiked) {
     !isLiked
       ?
-        api
+        itemApi
           .addCardLike(id)
           .then((res) => res.data)
           .then((updatedCard) => {
@@ -101,7 +104,7 @@ function App() {
           })
           .catch((err) => console.log(err))
       :
-        api
+        itemApi
           .removeCardLike(id) 
           .then((res) => res.data)
           .then((updatedCard) => {
@@ -136,15 +139,16 @@ function App() {
   useEffect(() => {
     const token = getToken();
     if (token) {
-      api.auth(token)
+      userApi.auth(token)
         .then((res) => {
+          itemApi.setTokenHeader(token);
           setCurrentUser(res.data);
           setIsLoggedIn(true);
         })
         .catch((err) => { console.log(err) });
     }
 
-    api.getItems()
+   itemApi.getItems()
       .then((items) => {
         updateClothes(items.data);
       })
@@ -177,18 +181,17 @@ function App() {
             isLoggedIn={isLoggedIn}
           />
           <Switch>
-            <Route path="/profile">
-              {isLoggedIn ?
-                <Profile
-                  cards={clothes}
-                  openModalHandler={handleModalOpen}
-                  setItemModalInfo={setItemModalInfo}
-                  onCardLike={handleCardLike}
-                  logOutHandler={logOut}
-                /> :
-                <Redirect to="/" replace></Redirect>
-              }
-            </Route>
+            <ProtectedRoute path="/profile"
+                isLoggedIn={isLoggedIn}>
+              <Profile
+                component={Profile}
+                cards={clothes}
+                openModalHandler={handleModalOpen}
+                setItemModalInfo={setItemModalInfo}
+                onCardLike={handleCardLike}
+                logOutHandler={logOut}
+              />
+            </ProtectedRoute>
             <Route path="/">
               <Main
                 weather={weather}

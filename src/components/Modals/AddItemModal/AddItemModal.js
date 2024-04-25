@@ -27,21 +27,21 @@ function AddItemModal(props) {
       onSubmit={submitHandler}
       isOpen={props.isOpen}
     >
-      <label className="modal_type_form__label" htmlFor="name-input">Name</label>
+      <label className="modal_type_form__label" htmlFor="name-input-item">Name</label>
       <input type="text"
         className="modal_type_form__input"
         placeholder="Name"
-        id="name-input"
+        id="name-input-item"
         value={name}
         onChange={(e) => {setName(e.target.value)}}
         required
       />
 
-      <label className="modal_type_form__label" htmlFor="link-input">Image</label>
+      <label className="modal_type_form__label" htmlFor="link-input-item">Image</label>
       <input type="url"
         className="modal_type_form__input"
         placeholder="Image URL"
-        id="link-input"
+        id="link-input-item"
         value={image}
         onChange={(e) => {setImage(e.target.value)}}
         required

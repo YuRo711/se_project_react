@@ -33,40 +33,40 @@ function RegisterModal(props) {
       altModalId={props.altModalId}
       buttonNoMargin={true}
     >
-      <label className="modal_type_form__label" htmlFor="email-input">Email*</label>
+      <label className="modal_type_form__label" htmlFor="email-input-signin">Email*</label>
       <input type="text"
         className="modal_type_form__input"
         placeholder="Email"
-        id="email-input"
+        id="email-input-signin"
         value={email}
         onChange={(e) => {setEmail(e.target.value)}}
         required
       />
 
-      <label className="modal_type_form__label" htmlFor="password-input">Password*</label>
+      <label className="modal_type_form__label" htmlFor="password-input-signin">Password*</label>
       <input type="password"
         className="modal_type_form__input"
         placeholder="Password"
-        id="password-input"
+        id="password-input-signin"
         value={password}
         onChange={(e) => {setPassword(e.target.value)}}
         required
       />
 
-      <label className="modal_type_form__label" htmlFor="name-input">Name</label>
+      <label className="modal_type_form__label" htmlFor="name-input-signin">Name</label>
       <input type="text"
         className="modal_type_form__input"
         placeholder="Name"
-        id="name-input"
+        id="name-input-signin"
         value={name}
         onChange={(e) => {setName(e.target.value)}}
       />
 
-      <label className="modal_type_form__label" htmlFor="avatar-input">Avatar URL</label>
+      <label className="modal_type_form__label" htmlFor="avatar-input-signin">Avatar URL</label>
       <input type="text"
         className="modal_type_form__input"
         placeholder="Avatar URL"
-        id="avatar-input"
+        id="avatar-input-signin"
         value={avatar}
         onChange={(e) => {setAvatar(e.target.value)}}
       />
