@@ -19,7 +19,7 @@ import RegisterModal from "../Modals/RegisterModal/RegisterModal.js";
 import LoginModal from "../Modals/LoginModal/LoginModal.js";
 import { getToken, removeToken, setToken } from "../../utils/token.js";
 import EditUserModal from "../Modals/EditUserModal/EditUserModal.js";
-import ProtectedRoute from "../../utils/protectedRoute.js";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
   }
 
   async function handleUpdateUser(data) {
-    return itemApi.updateUser(data);
+    return userApi.updateUser(data);
   }
 
   function handleModalClose(modalId) {
