@@ -190,6 +190,7 @@ function App() {
                 setItemModalInfo={setItemModalInfo}
                 onCardLike={handleCardLike}
                 logOutHandler={logOut}
+                isLoggedIn={isLoggedIn}
               />
             </ProtectedRoute>
             <Route path="/">

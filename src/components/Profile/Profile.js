@@ -14,6 +14,7 @@ function Profile(props) {
         setItemModalInfo={props.setItemModalInfo}
         cards={props.cards}
         onCardLike={props.onCardLike}
+        isLoggedIn={props.isLoggedIn}
       />
     </main>
   );
