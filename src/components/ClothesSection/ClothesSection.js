@@ -30,6 +30,7 @@ function ClothesSection(props) {
                   openModalHandler={props.openModalHandler}
                   setItemModalInfo={props.setItemModalInfo}
                   onCardLike={props.onCardLike}
+                  isLoggedIn={props.isLoggedIn}
                 />
               ))
           }
