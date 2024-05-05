@@ -1,7 +1,9 @@
+import { baseUrl } from "./constants";
+
 export default class UserApi
 {
   constructor() {
-    this._baseUrl = 'http://localhost:3001';
+    this._baseUrl = baseUrl;
     this._headers = new Headers({"content-type": "application/json"});
   }
 
