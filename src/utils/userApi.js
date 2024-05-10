@@ -4,7 +4,10 @@ export default class UserApi
 {
   constructor() {
     this._baseUrl = baseUrl;
-    this._headers = new Headers({"content-type": "application/json"});
+    this._headers = new Headers({
+      "content-type": "application/json",
+      "Access-Control-Allow-Origin": "https://api.wtwr.tinysun.net"
+    });
   }
 
   async _request(url, method, requestBody, headers=this._headers) {
