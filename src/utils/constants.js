@@ -39,5 +39,5 @@ export const weatherImagesNight = {
 };
 
 export const baseUrl = process.env.NODE_ENV === "production" 
-? "put the URL for your deployed backend here, including https://"
+? "https://api.wtwr.tinysun.net"
 : "http://localhost:3001";
