@@ -1,14 +1,10 @@
-import { 
-  apiKey,
-  latitude,
-  longitude,
-} from "./constants.js";
+import { apiKey } from "./constants.js";
 
 export default class WeatherApi
 {
-  async getWeather()
+  async getWeather(latitude, longitude)
   {
-    return this._getWeatherJson()
+    return this._getWeatherJson(latitude, longitude)
       .then((json) => {
         const temperature = Math.round(json.main.temp);
         const tempType = this._getTempType(temperature);
@@ -31,7 +27,7 @@ export default class WeatherApi
       });
   }
 
-  async _getWeatherJson()
+  async _getWeatherJson(latitude, longitude)
   {
     return fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`

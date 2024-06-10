@@ -135,6 +135,7 @@ function App() {
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [location, setLocation] = useState({});
 
   useEffect(() => {
     const token = getToken();
@@ -148,17 +149,24 @@ function App() {
         .catch((err) => { console.log(err) });
     }
 
-   itemApi.getItems()
+    itemApi.getItems()
       .then((items) => {
         updateClothes(items.data);
       })
       .catch((err) => { console.log(err); });
+
+    navigator.geolocation.getCurrentPosition(
+      (newLocation) => {
+        setLocation(newLocation);
+        const { latitude, longitude } = newLocation.coords;
       
-    weatherApi.getWeather()
-      .then((weatherData) => {
-        updateWeather(weatherData);
-      })
-      .catch((err) => { console.log(err); });
+        weatherApi.getWeather(latitude, longitude)
+          .then((weatherData) => {
+            updateWeather(weatherData);
+          })
+          .catch((err) => { console.log(err); });
+      }
+    );
   }, [isLoggedIn]);
 
   //#endregion
@@ -166,7 +174,9 @@ function App() {
   //#region Rendering
 
   if (!weather || (!currentUser._id && isLoggedIn)) {
-    return <div className="page">Loading...</div>
+    return <div className="page">
+      Loading... (You may need to enable geolocation)
+    </div>
   } else {
     return (
       <div className="page">
