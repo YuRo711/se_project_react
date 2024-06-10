@@ -16,9 +16,6 @@
 // #endregion
 
 export const apiKey = "2979cfc6bd4b20d5aad1e14ac0da127a";
-export const locationName = "Tel Aviv";
-export const latitude = 32.109333;
-export const longitude = 34.855499;
 
 export const weatherImagesDay = {
   clear: dayClear,
