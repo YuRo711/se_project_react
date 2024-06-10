@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import {
-  locationName,
-} from "../../utils/constants.js";
 import Header from "../Header/Header.js";
 import Main from "../Main/Main.js";
 import Profile from "../Profile/Profile.js";
@@ -185,7 +182,7 @@ function App() {
         >
         <CurrentUserContext.Provider value={currentUser}>
           <Header 
-            locationName={locationName}
+            locationName={weather.locationName}
             currentDate={currentDate}
             openModalHandler={handleModalOpen}
             isLoggedIn={isLoggedIn}

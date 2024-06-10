@@ -16,7 +16,6 @@
 // #endregion
 
 export const apiKey = "2979cfc6bd4b20d5aad1e14ac0da127a";
-export const locationName = "Tel Aviv";
 
 export const weatherImagesDay = {
   clear: dayClear,

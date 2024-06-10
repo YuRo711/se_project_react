@@ -15,14 +15,17 @@ export default class WeatherApi
         const tempF = `${temperature}°F`;
         const tempC = `${Math.round((temperature- 32) * 5/9)}°C`;
 
+        const locationName = json.name;
+
         return {
           temperature: {
             F: tempF,
             C: tempC,
           },
-          tempType: tempType,
-          weatherType: weatherType,
-          dayTime: dayTime,
+          tempType,
+          weatherType,
+          dayTime,
+          locationName
         }
       });
   }
